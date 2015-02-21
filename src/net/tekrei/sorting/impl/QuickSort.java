@@ -15,7 +15,7 @@ import net.tekrei.sorting.Sort;
  * 
  *         Complexity: average case: O(nlogn) worst case: O(n^2) (but it is
  *         rare)
- *         
+ * 
  *         For improvement median-of-three partitioning can be used.
  *
  *         For more information @see {@linktourl
@@ -32,20 +32,20 @@ public class QuickSort extends Sort {
 		sort(list.subList(pivot + 1, list.size()));
 		return list;
 	}
-	
-	private Integer partition(List<Integer> list){
-		Integer pivotIndex = list.size()/2;
+
+	private Integer partition(List<Integer> list) {
+		Integer pivotIndex = list.size() / 2;
 		Integer pivotValue = list.get(pivotIndex);
-		swap(list, pivotIndex, list.size()-1);
+		swap(list, pivotIndex, list.size() - 1);
 		Integer storeIndex = 0;
-		for(int i=0;i<list.size()-1;i++){
-			if(list.get(i)<=pivotValue){
+		for (int i = 0; i < list.size() - 1; i++) {
+			if (list.get(i) <= pivotValue) {
 				swap(list, i, storeIndex);
 				storeIndex++;
 			}
 		}
-		swap(list, storeIndex, list.size()-1);
+		swap(list, storeIndex, list.size() - 1);
 		return storeIndex;
 	}
-	
+
 }
