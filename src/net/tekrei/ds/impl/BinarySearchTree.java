@@ -19,7 +19,17 @@ public class BinarySearchTree<AnyType extends Comparable<AnyType>> {
 	private int size = 0;
 
 	public BTreeNode<AnyType> find(AnyType info) {
-		// TODO not implemented yet
+		BTreeNode<AnyType> temp = root;
+		while (temp != null) {
+			int comparison = info.compareTo(temp.getInfo());
+			if (comparison == -1) {
+				temp = temp.getLeft();
+			} else if (comparison == 1) {
+				temp = temp.getRight();
+			} else {
+				return temp;
+			}
+		}
 		return null;
 	}
 
@@ -70,15 +80,21 @@ public class BinarySearchTree<AnyType extends Comparable<AnyType>> {
 		}
 		return node;
 	}
+	
+	public BTreeNode<AnyType> findMin() {
+		return findMin(root);		
+	}
 
 	private BTreeNode<AnyType> findMin(BTreeNode<AnyType> node) {
-		// TODO not implemented yet
-		return null;
+		BTreeNode<AnyType> temp = node;
+		while(temp.getLeft()!=null){
+			temp = temp.getLeft();
+		}
+		return temp;
 	}
 
 	public boolean contains(AnyType info) {
-		// TODO not implemented yet
-		return false;
+		return (find(info)!=null);		
 	}
 
 	public boolean isEmpty() {

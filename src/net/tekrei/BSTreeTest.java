@@ -17,6 +17,18 @@ public class BSTreeTest {
 		System.out.println(tree);
 		System.out.println(tree.postorderTraversal());
 		System.out.println(tree.preorderTraversal());
+		tree.insert(15);
+		System.out.println(tree);
+		tree.remove(15);
+		System.out.println(tree);
+		tree.insert(5);
+		System.out.println(tree);
+		System.out.println(tree.find(5));
+		System.out.println(tree.contains(5));
+		tree.remove(5);
+		System.out.println(tree.contains(5));
+		System.out.println(tree);
+		System.out.println(tree.findMin());
 	}
 
 }
