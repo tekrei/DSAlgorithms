@@ -11,19 +11,12 @@ public class BTreeNode<AnyType> extends Node<AnyType> {
 
 	private BTreeNode<AnyType> left;
 	private BTreeNode<AnyType> right;
-	private BTreeNode<AnyType> parent;
-
-	public BTreeNode(AnyType info, BTreeNode<AnyType> _left,
-			BTreeNode<AnyType> _right, BTreeNode<AnyType> _parent) {
-		this.information = info;
-		this.left = _left;
-		this.right = _right;
-		this.parent = _parent;
-	}
 
 	public BTreeNode(AnyType info, BTreeNode<AnyType> _left,
 			BTreeNode<AnyType> _right) {
-		this(info, _left, _right, null);
+		this.information = info;
+		this.left = _left;
+		this.right = _right;
 	}
 
 	public BTreeNode(AnyType info) {
@@ -48,14 +41,6 @@ public class BTreeNode<AnyType> extends Node<AnyType> {
 
 	public void setRight(BTreeNode<AnyType> right) {
 		this.right = right;
-	}
-
-	public BTreeNode<AnyType> getParent() {
-		return parent;
-	}
-
-	public void setParent(BTreeNode<AnyType> parent) {
-		this.parent = parent;
 	}
 
 }
