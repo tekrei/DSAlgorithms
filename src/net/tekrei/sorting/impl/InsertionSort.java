@@ -14,8 +14,8 @@ import net.tekrei.sorting.Sort;
  * 
  *         Complexity: Best -> O(n) Average, Worst -> O(n^2)
  *
- *         For more information @see {@linktourl
- *         https://en.wikipedia.org/wiki/Insertion_sort}
+ * @see <a
+ *      href="https://en.wikipedia.org/wiki/Insertion_sort">https://en.wikipedia.org/wiki/Insertion_sort</a>
  */
 
 public class InsertionSort extends Sort {

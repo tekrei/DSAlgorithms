@@ -17,8 +17,8 @@ import net.tekrei.sorting.Sort;
  * 
  *         Complexity: average, best and worst case O(nlogn)
  *
- *         For more information @see {@linktourl
- *         https://en.wikipedia.org/wiki/Quick_sort}
+ * @see <a
+ *      href="https://en.wikipedia.org/wiki/Quick_sort">https://en.wikipedia.org/wiki/Quick_sort</a>
  */
 
 public class HeapSort extends Sort {

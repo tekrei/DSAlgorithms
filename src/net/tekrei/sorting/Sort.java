@@ -15,7 +15,7 @@ public abstract class Sort {
 	 * Method to sort collection It must be implemented in all subclasses
 	 * 
 	 * @param list
-	 * @return
+	 * @return sorted list
 	 */
 	public abstract List<Integer> sort(List<Integer> list);
 

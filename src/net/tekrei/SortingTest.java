@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import net.tekrei.sorting.impl.BucketSort;
 import net.tekrei.sorting.impl.HeapSort;
 import net.tekrei.sorting.impl.InsertionSort;
 import net.tekrei.sorting.impl.MergeSort;
@@ -12,14 +13,15 @@ import net.tekrei.sorting.impl.QuickSort;
 public class SortingTest {
 
 	private static Random randomGenerator = new Random();
-	private static boolean DEBUG = true;
+	private static boolean DEBUG = false;
 
 	public static void main(String[] args) {
-		List<Integer> list = generateIntegerList(10);
+		List<Integer> list = generateIntegerList(10000);
 		insertionSort(cloneList(list));
 		mergeSort(cloneList(list));
 		quickSort(cloneList(list));
 		heapSort(cloneList(list));
+		bucketSort(cloneList(list));
 	}
 
 	@SuppressWarnings("unchecked")
@@ -79,6 +81,21 @@ public class SortingTest {
 			System.out.println("UNSORTED" + list);
 		long start = System.nanoTime();
 		list = (new HeapSort()).sort(list);
+		long end = System.nanoTime();
+		if (DEBUG)
+			System.out.println("SORTED" + list);
+		System.out.println("TIME:" + (end - start));
+		System.out.println("--------------------------------------");
+		return list;
+	}
+	
+	private static List<Integer> bucketSort(List<Integer> list) {
+		System.out.println("BUCKET SORT");
+		System.out.println("--------------------------------------");
+		if (DEBUG)
+			System.out.println("UNSORTED" + list);
+		long start = System.nanoTime();
+		list = (new BucketSort()).sort(list);
 		long end = System.nanoTime();
 		if (DEBUG)
 			System.out.println("SORTED" + list);

@@ -8,8 +8,8 @@ package net.tekrei.ds.impl;
  * @param <AnyType>
  *            type of the data stored in it
  * 
- *            For more information @see {@linktourl
- *            https://en.wikipedia.org/wiki/Queue_%28abstract_data_type%29}
+ * @see <a
+ *      href="https://en.wikipedia.org/wiki/Queue_%28abstract_data_type%29">https://en.wikipedia.org/wiki/Queue_%28abstract_data_type%29</a>
  */
 public class Queue<AnyType> {
 

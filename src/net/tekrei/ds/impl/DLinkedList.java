@@ -11,8 +11,8 @@ import net.tekrei.ds.LinkedList;
  * @param <AnyType>
  *            type of the data stored in it
  * 
- *            For more information @see {@linktourl
- *            https://en.wikipedia.org/wiki/Linked_list}
+ * @see <a
+ *      href="https://en.wikipedia.org/wiki/Linked_list">https://en.wikipedia.org/wiki/Linked_list</a>
  */
 public class DLinkedList<AnyType> extends LinkedList<AnyType> {
 	DLLNode<AnyType> head;

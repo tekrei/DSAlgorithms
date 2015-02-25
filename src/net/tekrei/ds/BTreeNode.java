@@ -6,6 +6,7 @@ package net.tekrei.ds;
  * @author tekrei
  *
  * @param <AnyType>
+ *            type of the data stored in it
  */
 public class BTreeNode<AnyType> extends Node<AnyType> {
 

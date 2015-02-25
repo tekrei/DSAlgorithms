@@ -18,8 +18,8 @@ import net.tekrei.sorting.Sort;
  * 
  *         For improvement median-of-three partitioning can be used.
  *
- *         For more information @see {@linktourl
- *         https://en.wikipedia.org/wiki/Quick_sort}
+ * @see <a
+ *      href="https://en.wikipedia.org/wiki/Quick_sort">https://en.wikipedia.org/wiki/Quick_sort</a>
  */
 
 public class QuickSort extends Sort {

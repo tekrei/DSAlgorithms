@@ -10,8 +10,8 @@ import net.tekrei.ds.BTreeNode;
  * @param <AnyType>
  *            type of the data stored in it
  * 
- *            For more information @see {@linktourl
- *            https://en.wikipedia.org/wiki/Binary_search_tree}
+ * @see <a
+ *      href="https://en.wikipedia.org/wiki/Binary_search_tree">https://en.wikipedia.org/wiki/Binary_search_tree</a>
  */
 public class BinarySearchTree<AnyType extends Comparable<AnyType>> {
 
@@ -63,7 +63,7 @@ public class BinarySearchTree<AnyType extends Comparable<AnyType>> {
 	 * 
 	 * @param info
 	 * @param node
-	 * @return
+	 * @return inserted node
 	 */
 	private BTreeNode<AnyType> insert(AnyType info, BTreeNode<AnyType> node) {
 		if (node == null) {
@@ -80,21 +80,21 @@ public class BinarySearchTree<AnyType extends Comparable<AnyType>> {
 		}
 		return node;
 	}
-	
+
 	public BTreeNode<AnyType> findMin() {
-		return findMin(root);		
+		return findMin(root);
 	}
 
 	private BTreeNode<AnyType> findMin(BTreeNode<AnyType> node) {
 		BTreeNode<AnyType> temp = node;
-		while(temp.getLeft()!=null){
+		while (temp.getLeft() != null) {
 			temp = temp.getLeft();
 		}
 		return temp;
 	}
 
 	public boolean contains(AnyType info) {
-		return (find(info)!=null);		
+		return (find(info) != null);
 	}
 
 	public boolean isEmpty() {

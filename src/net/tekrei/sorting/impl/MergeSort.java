@@ -18,8 +18,8 @@ import net.tekrei.sorting.Sort;
  * 
  *         Complexity: Average, Worst -> O(nlogn)
  * 
- *         For more information @see {@linktourl
- *         https://en.wikipedia.org/wiki/Merge_sort}
+ * @see <a
+ *      href="https://en.wikipedia.org/wiki/Merge_sort">https://en.wikipedia.org/wiki/Merge_sort</a>
  */
 
 public class MergeSort extends Sort {
