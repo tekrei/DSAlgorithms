@@ -88,7 +88,7 @@ public class SortingTest {
 		System.out.println("--------------------------------------");
 		return list;
 	}
-	
+
 	private static List<Integer> bucketSort(List<Integer> list) {
 		System.out.println("BUCKET SORT");
 		System.out.println("--------------------------------------");
@@ -107,8 +107,12 @@ public class SortingTest {
 	public static List<Integer> generateIntegerList(int size) {
 		List<Integer> list = new ArrayList<Integer>();
 		for (int i = 0; i < size; i++) {
-			list.add(randomGenerator.nextInt(size * size));
+			list.add(randomInt(size * size));
 		}
 		return list;
+	}
+
+	public static Integer randomInt(int upper) {
+		return randomGenerator.nextInt(upper);
 	}
 }

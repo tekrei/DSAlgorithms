@@ -23,10 +23,11 @@ import java.util.Arrays;
  *            type of the data stored in it
  * 
  * @see <a href=
- *      "https://en.wikipedia.org/wiki/Heap_(data_structure)">https://en.wikipedia.org/wiki/Heap_(data_structure)</a
- *      ><br/>
+ *      "https://en.wikipedia.org/wiki/Heap_(data_structure)">https://en
+ *      .wikipedia.org/wiki/Heap_(data_structure)</a ><br/>
  *      <a href="http://courses.cs.washington.edu/courses/cse373/11wi/homework
- *      /5/BinaryHeap.java">http://courses.cs.washington.edu/courses/cse373/11wi/
+ *      /5
+ *      /BinaryHeap.java">http://courses.cs.washington.edu/courses/cse373/11wi/
  *      homework /5/BinaryHeap.java</a>
  */
 public class BinaryHeap<AnyType extends Comparable<AnyType>> {

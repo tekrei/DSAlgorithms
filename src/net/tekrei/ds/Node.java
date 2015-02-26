@@ -9,6 +9,14 @@ package net.tekrei.ds;
  *            type of the data stored in it
  */
 public class Node<AnyType> {
+
+	public Node() {
+	}
+
+	public Node(AnyType info) {
+		information = info;
+	}
+
 	protected AnyType information;
 
 	public AnyType getInfo() {
@@ -22,4 +30,9 @@ public class Node<AnyType> {
 	public String toString() {
 		return "[" + information + "]";
 	}
+
+	public boolean isEquals(Node<AnyType> other) {
+		return other.getInfo().equals(getInfo());
+	}
+
 }

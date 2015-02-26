@@ -23,6 +23,24 @@ public class SLinkedList<AnyType> extends LinkedList<AnyType> {
 		size = 0;
 	}
 
+	public boolean contains(AnyType info) {
+		return index(info) > -1;
+	}
+
+	public Integer index(AnyType info) {
+		int idx = 0;
+		if (head.getInfo().equals(info))
+			return idx;
+		SLLNode<AnyType> temp = head;
+		while (temp.getNext() != null) {
+			temp = (SLLNode<AnyType>) temp.getNext();
+			idx++;
+			if (temp.getInfo().equals(info))
+				return idx;
+		}
+		return -1;
+	}
+
 	@Override
 	public AnyType get(int idx) {
 		if (idx < 0)
@@ -83,6 +101,10 @@ public class SLinkedList<AnyType> extends LinkedList<AnyType> {
 		size++;
 	}
 
+	public AnyType remove(AnyType info) {
+		return remove(index(info));
+	}
+
 	@Override
 	public AnyType remove(int idx) {
 		AnyType info = null;
@@ -116,7 +138,7 @@ public class SLinkedList<AnyType> extends LinkedList<AnyType> {
 
 	@Override
 	public String toString() {
-		String str = "[";
+		String str = "";
 		SLLNode<AnyType> temp = head;
 		// single linked list traversal
 		while (temp != null) {
@@ -125,6 +147,6 @@ public class SLinkedList<AnyType> extends LinkedList<AnyType> {
 				str += ", ";
 			temp = (SLLNode<AnyType>) temp.getNext();
 		}
-		return str + "]";
+		return str;
 	}
 }

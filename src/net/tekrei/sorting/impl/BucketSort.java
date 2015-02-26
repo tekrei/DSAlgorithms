@@ -17,8 +17,9 @@ import net.tekrei.sorting.Sort;
  *
  * @see <a
  *      href="https://en.wikipedia.org/wiki/Bucket_sort">https://en.wikipedia.
- *      org/wiki/Bucket_sort</a> <br/> <a
- *      href="https://en.algoritmy.net/article/41160/Bucket-sort"
+
+ *      org/wiki/Bucket_sort</a> <br/>
+ *      <a href="https://en.algoritmy.net/article/41160/Bucket-sort"
  *      >https://en.algoritmy.net/article/41160/Bucket-sort</a>
  * 
  */
