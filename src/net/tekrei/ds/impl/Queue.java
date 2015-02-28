@@ -25,6 +25,10 @@ public class Queue<AnyType> {
 	public void enqueue(AnyType info) {
 		list.insert(info);
 	}
+	
+	public AnyType peek(){
+		return list.get(0);
+	}
 
 	public boolean isEmpty() {
 		return list.size() == 0;

@@ -13,11 +13,27 @@ public class BTreeNode<AnyType> extends Node<AnyType> {
 	private BTreeNode<AnyType> left;
 	private BTreeNode<AnyType> right;
 
-	public BTreeNode(AnyType info, BTreeNode<AnyType> _left,
-			BTreeNode<AnyType> _right) {
-		this.information = info;
+	private int height;
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+
+	public BTreeNode(AnyType _info, BTreeNode<AnyType> _left,
+			BTreeNode<AnyType> _right, int _height) {
+		this.information = _info;
 		this.left = _left;
 		this.right = _right;
+		this.height = _height;
+	}
+
+	public BTreeNode(AnyType _info, BTreeNode<AnyType> _left,
+			BTreeNode<AnyType> _right) {
+		this(_info, _left, _right, 0);
 	}
 
 	public BTreeNode(AnyType info) {

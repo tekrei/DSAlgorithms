@@ -2,12 +2,12 @@ package net.tekrei;
 
 import java.util.List;
 
-import net.tekrei.ds.impl.BinarySearchTree;
+import net.tekrei.ds.impl.AVLTree;
 
-public class BSTreeTest {
+public class AVLTreeTest {
 
 	public static void main(String[] args) {
-		BinarySearchTree<Integer> tree = new BinarySearchTree<Integer>();
+		AVLTree<Integer> tree = new AVLTree<Integer>();
 		List<Integer> integerList = SortingTest.generateIntegerList(10);
 		System.out.println(integerList);
 		for (Integer i : integerList) {
@@ -29,6 +29,7 @@ public class BSTreeTest {
 		System.out.println(tree.contains(5));
 		System.out.println(tree);
 		System.out.println(tree.findMin());
+		tree.checkBalance();
 		tree.print();
 	}
 

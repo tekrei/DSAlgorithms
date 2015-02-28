@@ -85,7 +85,7 @@ public class BinarySearchTree<AnyType extends Comparable<AnyType>> {
 		return findMin(root);
 	}
 
-	private BTreeNode<AnyType> findMin(BTreeNode<AnyType> node) {
+	protected BTreeNode<AnyType> findMin(BTreeNode<AnyType> node) {
 		BTreeNode<AnyType> temp = node;
 		while (temp.getLeft() != null) {
 			temp = temp.getLeft();
@@ -157,4 +157,44 @@ public class BinarySearchTree<AnyType extends Comparable<AnyType>> {
 		return inorderTraversal();
 	}
 
+	/**
+	 * print tree as level order
+	 * 
+	 * @see http://stackoverflow.com/a/12491300
+	 * @param tmpRoot
+	 */
+	public void print() {
+
+		Queue<BTreeNode<AnyType>> currentLevel = new Queue<BTreeNode<AnyType>>();
+		Queue<BTreeNode<AnyType>> nextLevel = new Queue<BTreeNode<AnyType>>();
+
+		currentLevel.enqueue(root);
+
+		while (!currentLevel.isEmpty()) {
+			while (!currentLevel.isEmpty()) {
+				BTreeNode<AnyType> currentNode = currentLevel.dequeue();
+				if (currentNode.getLeft() != null) {
+					nextLevel.enqueue(currentNode.getLeft());
+				}
+				if (currentNode.getRight() != null) {
+					nextLevel.enqueue(currentNode.getRight());
+				}
+				System.out.print(currentNode.getInfo() + " ");
+			}
+			System.out.println();
+			currentLevel = nextLevel;
+			nextLevel = new Queue<BTreeNode<AnyType>>();
+		}
+
+	}
+
+	protected int maxLevel(BTreeNode<AnyType> node) {
+		if (node == null)
+			return 0;
+		return Math.max(maxLevel(node.getLeft()), maxLevel(node.getRight())) + 1;
+	}
+
+	protected int height(BTreeNode<AnyType> t) {
+		return t == null ? -1 : t.getHeight();
+	}
 }
