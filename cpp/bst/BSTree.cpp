@@ -124,7 +124,7 @@ void BSTree<T>::inorder(Node *node) {
 	inorder(node->right);
 }
 
-int main() {
+/*int main() {
 	BSTree<float> tree;
 	for (int i = 0; i < 10; i++) {
 		tree.insert((float)i/10.0);
@@ -140,4 +140,4 @@ int main() {
 	cout << "Current size:" << tree.getSize() << endl;
 	delete &tree;
 	return 0;
-}
+}*/
