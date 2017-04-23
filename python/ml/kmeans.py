@@ -1,5 +1,6 @@
 """
 Created on May 24, 2013
+Updated on Apr 23, 2017
 @author: tekrei
 
 http://stackoverflow.com/questions/1545606/python-k-means-algorithm
