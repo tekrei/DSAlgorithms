@@ -1,3 +1,4 @@
+#!/usr/bin/python
 """
 Created on May 24, 2013
 Updated on Apr 23, 2017
@@ -100,8 +101,8 @@ if __name__ == "__main__":
     f, (ax1, ax2) = plt.subplots(1, 2, sharey=True)
     ax1.scatter(sampleData[:,0],sampleData[:,1],c=clusterResult)
     ax1.plot(ae.clusterCenters[:,0],ae.clusterCenters[:,1], 'g^')
-    ax1.set_title("K-Means code result")
+    ax1.set_title("code")
     ax2.scatter(sampleData[:,0],sampleData[:,1],c=sklKMeans.labels_)
     ax2.plot(sklKMeans.cluster_centers_[:,0],sklKMeans.cluster_centers_[:,1], 'g^')
-    ax2.set_title("scikit-learn K-Means result")
+    ax2.set_title("scikit-learn")
     plt.show()
