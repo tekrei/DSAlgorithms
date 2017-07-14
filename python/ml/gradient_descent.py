@@ -3,7 +3,7 @@ Created on May 18, 2015
 
 @author: tekrei
 A simple gradient descent usage for function optimization
-Source: http://en.wikipedia.org/wiki/Gradient_descent#A_computational_example
+Source: https://en.wikipedia.org/wiki/Gradient_descent#Python
 '''
 
 x_old = 0
