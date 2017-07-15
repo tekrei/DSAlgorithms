@@ -146,5 +146,5 @@ def r_square(measured, estimated):
 
 
 if __name__ == '__main__':
-    plot_data('springData.txt')
+    plot_data('data/springData.txt')
     pylab.show()

@@ -52,7 +52,7 @@ def gradient_descent_runner(points, starting_b, starting_m, learning_rate, num_i
 
 def run():
     #read data
-    points = np.genfromtxt("data.csv", delimiter=",")
+    points = np.genfromtxt("data/data.csv", delimiter=",")
     #set learning rate
     learning_rate = 0.0001
     # starting guesses of the parameters
