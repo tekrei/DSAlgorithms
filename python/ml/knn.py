@@ -25,6 +25,7 @@ It is tested with the following example data sets:
 - lung cancer: moved target values to the last column, missed values replaced by -1 (https://archive.ics.uci.edu/ml/datasets/Lung+Cancer)
 - phishing_websites: nothing changed, converted to CSV without header (https://archive.ics.uci.edu/ml/datasets/Phishing+Websites)
 - arrhythmia: missed values replaced by -1 (https://archive.ics.uci.edu/ml/datasets/Arrhythmia)
+- banknote: nothing changed, converted to CSV (https://archive.ics.uci.edu/ml/datasets/banknote+authentication)
 
 The main source for the code is the following tutorial: Source: http://machinelearningmastery.com/tutorial-to-implement-k-nearest-neighbors-in-python-from-scratch/
 '''
