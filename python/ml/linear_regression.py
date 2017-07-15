@@ -1,29 +1,13 @@
+#!/usr/bin/python
 # coding=utf-8
 '''
-Created on May 16, 2015
-
 @author: tekrei
-Linear Regression example from Introduction to Computation
-and Programming Using Python
+Linear Regression example from Introduction to Computation and Programming Using Python
 '''
-import pylab, numpy as np
+import numpy as np
+import matplotlib.pyplot as plot
 from scipy.stats import stats
-
-def get_data(filename):
-    '''
-    Returns data from text file
-    '''
-    data_file = open(filename, 'r')
-    distances = []
-    masses = []
-    # discardHeader
-    data_file.readline()
-    for line in data_file:
-        distance, mass = line.split()
-        distances.append(float(distance))
-        masses.append(float(mass))
-    data_file.close()
-    return (distances, masses)
+from utility import *
 
 def linear_fit_byhand(x_vals, y_vals):
     '''
@@ -35,70 +19,60 @@ def linear_fit_byhand(x_vals, y_vals):
     xy_sum = sum(x_vals*y_vals)
     xsquare_sum = sum(x_vals**2)
     count = len(x_vals)
-    
+
     # y = ax + b
-    #a = (NΣXY - (ΣX)(ΣY)) / (NΣX^2 - (ΣX)^2)
+    # a = (NΣXY - (ΣX)(ΣY)) / (NΣX^2 - (ΣX)^2)
     a_value = (((count*xy_sum)-(x_sum*y_sum))/((count*xsquare_sum)-x_sum**2))
-    #b =  (ΣY - b(ΣX)) / N 
+    # b =  (ΣY - b(ΣX)) / N 
     b_value = (y_sum-a_value*x_sum)/count 
-    est_yvals = a_value * pylab.array(x_vals) + b_value
+    print a_value, b_value, x_vals
+    est_yvals = a_value * x_vals + b_value
+    print est_yvals
     # calculate spring constant
     k = 1 / a_value
     # plot regression line
-    pylab.plot(x_vals, est_yvals, label='Linear fit by hand, k = ' + str(round(k)) +
-               ", RSquare = " + str(r_square(y_vals, est_yvals)))
-    pylab.legend(loc='best')
-    
+    plot.plot(x_vals, est_yvals, label='Linear fit by hand, k = ' + str(round(k)) + ", RSquare = " + str(r_square(y_vals, est_yvals)))
+
 def linregress(x_vals, y_vals):
     '''
     least-squares regression of scipy
     '''
     a_value, b_value, r_value, p_value, std_err = stats.linregress(x_vals,y_vals)
-    est_yvals = a_value * pylab.array(x_vals) + b_value
+    est_yvals = a_value * x_vals + b_value
     k = 1 / a_value
-    # plot regression line
-    print p_value, std_err
-    pylab.plot(x_vals, est_yvals, label='Least-squares fit, k = ' + str(round(k)) +
-               ", RSquare = " + str(r_value**2))
-    pylab.legend(loc='best')
+    plot.plot(x_vals, est_yvals, label='Least-squares fit, k = ' + str(round(k)) + ", RSquare = " + str(r_value**2))
 
 def linear_fit(x_vals, y_vals):
     '''
     Calculate regression line using linear fit
     y = ax + b
     '''
-    a_value, b_value = pylab.polyfit(x_vals, y_vals, 1)
-    est_yvals = a_value * pylab.array(x_vals) + b_value
+    a_value, b_value = np.polyfit(x_vals, y_vals, 1)
+    est_yvals = a_value * np.array(x_vals) + b_value
     # calculate spring constant
     k = 1 / a_value
     # plot regression line
-    pylab.plot(x_vals, est_yvals, label='Linear fit, k = ' + str(round(k)) +
-               ", RSquare = " + str(r_square(y_vals, est_yvals)))
-    pylab.legend(loc='best')
+    plot.plot(x_vals, est_yvals, label='Linear fit, k = ' + str(round(k)) + ", RSquare = " + str(r_square(y_vals, est_yvals)))
 
 def quadratic_fit(x_vals, y_vals):
     '''
     cubic fit
     ax^2+bx+c
     '''
-    a_value, b_value, c_value = pylab.polyfit(x_vals, y_vals, 2)
+    a_value, b_value, c_value = np.polyfit(x_vals, y_vals, 2)
     est_yvals = a_value * (x_vals ** 2) + b_value * (x_vals) + c_value
-    pylab.plot(x_vals, est_yvals, label='Quadratic fit, RSquare = '
-               + str(r_square(y_vals, est_yvals)))
-    pylab.legend(loc='best')
+    plot.plot(x_vals, est_yvals, label='Quadratic fit, RSquare = ' + str(r_square(y_vals, est_yvals)))
 
 def cubic_fit(x_vals, y_vals):
     '''
     cubic fit
     ax^3+bx^2+cx+d
     '''
-    a_value, b_value, c_value, d_value = pylab.polyfit(x_vals, y_vals, 3)
+    a_value, b_value, c_value, d_value = np.polyfit(x_vals, y_vals, 3)
     est_yvals = a_value * (x_vals ** 3) + b_value * (x_vals ** 2)
     est_yvals += c_value * x_vals + d_value
-    pylab.plot(x_vals, est_yvals, label='Cubic fit, RSquare = '
-               + str(r_square(y_vals, est_yvals)))
-    pylab.legend(loc='best')
-    
+    plot.plot(x_vals, est_yvals, label='Cubic fit, RSquare = ' + str(r_square(y_vals, est_yvals)))
+
 def printStatisticalSummary(x_vals,y_vals):
     print "Mean(x)="+str(np.mean(x_vals))," Mean(Y)="+str(np.mean(y_vals))
     print "Median(x)="+str(np.median(x_vals))," Median(Y)="+str(np.median(y_vals))
@@ -107,18 +81,19 @@ def printStatisticalSummary(x_vals,y_vals):
     print "Covariance(x,y)="+str(np.cov(x_vals, y_vals))
     print "Correlation(x,y)="+str(np.correlate(x_vals, y_vals))
 
-def plot_data(input_file):
+def plot_data(vals):
     '''
     plot x and y values together with regression line
     '''
-    x_vals, y_vals = get_data(input_file)
-    y_vals = pylab.array(y_vals)
-    x_vals = pylab.array(x_vals) * 9.81
+
+    x_vals = np.asarray([i[0]*9.81 for i in vals])
+    y_vals = np.asarray([i[1] for i in vals])
+
     # plot measurement values
-    pylab.plot(x_vals, y_vals, 'bo', label='Measured displacements')
-    pylab.title('Measurement Displacement of Spring', fontsize='x-large')
-    pylab.xlabel('|Force| (Newtons)', fontsize='x-large')
-    pylab.ylabel('Distance (meters)', fontsize='x-large')
+    plot.plot(x_vals, y_vals, 'bo', label='Measured displacements')
+    plot.title('Measurement Displacement of Spring', fontsize='x-large')
+    plot.xlabel('|Force| (Newtons)')
+    plot.ylabel('Distance (meters)')
     linear_fit_byhand(x_vals, y_vals)
     linear_fit(x_vals, y_vals)
     linregress(x_vals, y_vals)
@@ -144,7 +119,8 @@ def r_square(measured, estimated):
     m_variance = ((m_mean - measured) ** 2).sum()
     return 1 - (estimated_error / m_variance)
 
-
 if __name__ == '__main__':
-    plot_data('data/springData.txt')
-    pylab.show()
+    plot_data(np.genfromtxt("data/spring.csv", delimiter=","))
+    plot.legend(loc='best')
+    plot.tight_layout()
+    plot.show()
