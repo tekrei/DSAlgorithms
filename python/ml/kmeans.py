@@ -8,20 +8,17 @@ http://stackoverflow.com/questions/1545606/python-k-means-algorithm
 """
 from __future__ import division
 
-import numpy
 from random import sample
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans as SKLKMeans
 
+from utility import euclidean
+
 class KMeans():
-
-    def euclidean(self, A, B):
-        return numpy.sqrt(numpy.sum((A - B)**2))
-
     def cost(self, data, clusters, memberships):
         squareSum = 0
         for i, datum in enumerate(data):
-            squareSum += (self.euclidean(datum, clusters[memberships[i]]) ** 2)
+            squareSum += (euclidean(datum, clusters[memberships[i]]) ** 2)
 
         return (1 / data.shape[0]) * squareSum
 
@@ -50,7 +47,7 @@ class KMeans():
                 dmin = float('Inf')
                 #find the smallest distance cluster center
                 for j, cluster in enumerate(clusters):
-                    distance = self.euclidean(datum, cluster)
+                    distance = euclidean(datum, cluster)
                     if distance < dmin:
                         dmin = distance
                         n = j
@@ -85,7 +82,7 @@ class KMeans():
         #calculate inertia
         inertia = 0
         for i, datum in enumerate(data):
-            inertia += self.euclidean(datum, clusters[memberships[i]])
+            inertia += euclidean(datum, clusters[memberships[i]])
         print "inertia:",inertia
         return memberships
 

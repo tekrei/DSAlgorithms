@@ -1,0 +1,7 @@
+*.pyc
+/Debug/
+.settings
+.classpath
+.cproject
+.project
+.pydevproject
