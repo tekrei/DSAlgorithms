@@ -1,4 +1,5 @@
 *.pyc
+*.o
 /Debug/
 .settings
 .classpath
