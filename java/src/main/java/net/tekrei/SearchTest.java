@@ -1,6 +1,6 @@
 package net.tekrei;
 
-import net.tekrei.search.impl.*;
+import net.tekrei.search.*;
 
 import java.util.Collections;
 import java.util.List;
@@ -15,7 +15,7 @@ public class SearchTest {
     private static int EXPECTED_INDEX = 95;
 
     public static void main(String[] args) {
-        List<Integer> integers = SortingTest.generateIntegerList(LIST_SIZE);
+        List<Integer> integers = Utilities.generateIntegerList(LIST_SIZE);
         Collections.sort(integers);
         linearSearch(integers, integers.get(EXPECTED_INDEX));
         binarySearch(integers, integers.get(EXPECTED_INDEX));

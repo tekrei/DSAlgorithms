@@ -1,32 +1,20 @@
 package net.tekrei;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
-import net.tekrei.sorting.impl.BucketSort;
-import net.tekrei.sorting.impl.HeapSort;
-import net.tekrei.sorting.impl.InsertionSort;
-import net.tekrei.sorting.impl.MergeSort;
-import net.tekrei.sorting.impl.QuickSort;
+import net.tekrei.sorting.*;
 
 public class SortingTest {
 
-	private static Random randomGenerator = new Random();
 	private static boolean DEBUG = false;
 
 	public static void main(String[] args) {
-		List<Integer> list = generateIntegerList(10000);
-		insertionSort(cloneList(list));
-		mergeSort(cloneList(list));
-		quickSort(cloneList(list));
-		heapSort(cloneList(list));
-		bucketSort(cloneList(list));
-	}
-
-	@SuppressWarnings("unchecked")
-	private static List<Integer> cloneList(List<Integer> list) {
-		return (List<Integer>) ((ArrayList<Integer>) list).clone();
+		List<Integer> list = Utilities.generateIntegerList(10000);
+		insertionSort(Utilities.cloneList(list));
+		mergeSort(Utilities.cloneList(list));
+		quickSort(Utilities.cloneList(list));
+		heapSort(Utilities.cloneList(list));
+		bucketSort(Utilities.cloneList(list));
 	}
 
 	private static List<Integer> insertionSort(List<Integer> list) {
@@ -102,17 +90,5 @@ public class SortingTest {
 		System.out.println("TIME:" + (end - start));
 		System.out.println("--------------------------------------");
 		return list;
-	}
-
-	public static List<Integer> generateIntegerList(int size) {
-		List<Integer> list = new ArrayList<Integer>();
-		for (int i = 0; i < size; i++) {
-			list.add(randomInt(size * size));
-		}
-		return list;
-	}
-
-	public static Integer randomInt(int upper) {
-		return randomGenerator.nextInt(upper);
 	}
 }

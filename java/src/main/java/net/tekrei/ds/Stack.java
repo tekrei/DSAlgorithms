@@ -1,4 +1,4 @@
-package net.tekrei.ds.impl;
+package net.tekrei.ds;
 
 /**
  * Last In First Out (LIFO) data structure

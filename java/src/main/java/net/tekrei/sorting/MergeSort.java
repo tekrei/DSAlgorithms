@@ -1,4 +1,4 @@
-package net.tekrei.sorting.impl;
+package net.tekrei.sorting;
 
 import java.util.ArrayList;
 import java.util.List;

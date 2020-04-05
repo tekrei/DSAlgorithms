@@ -1,8 +1,6 @@
-package net.tekrei.ds.impl;
+package net.tekrei.ds;
 
 import java.util.PriorityQueue;
-
-import net.tekrei.ds.GraphNode;
 
 /**
  * 
@@ -12,11 +10,10 @@ import net.tekrei.ds.GraphNode;
  *         singly linked list to store nodes and nodes storing edges using
  *         singly linked list
  *
- * @param <AnyType>
- *            data type to store in the graph
+ * @param <AnyType> data type to store in the graph
  * 
- * @see <a
- *      href="http://en.wikipedia.org/wiki/Graph_%28abstract_data_type%29">http://en.wikipedia.org/wiki/Graph_%28abstract_data_type%29</a>
+ * @see <a href=
+ *      "http://en.wikipedia.org/wiki/Graph_%28abstract_data_type%29">http://en.wikipedia.org/wiki/Graph_%28abstract_data_type%29</a>
  */
 public class Graph<AnyType> {
 
@@ -88,8 +85,7 @@ public class Graph<AnyType> {
 		return nodes.remove(node).getInfo();
 	}
 
-	public boolean removeEdge(GraphNode<AnyType> node,
-			GraphNode<AnyType> neighbor) {
+	public boolean removeEdge(GraphNode<AnyType> node, GraphNode<AnyType> neighbor) {
 		return node.removeNeighbor(neighbor);
 	}
 
@@ -114,11 +110,10 @@ public class Graph<AnyType> {
 	/**
 	 * Breadth First Search traversal of the graph
 	 * 
-	 * @param start
-	 *            starting point of the traversal
+	 * @param start starting point of the traversal
 	 * @return string representation of the BFS traversal
-	 * @see <a
-	 *      href="http://en.wikipedia.org/wiki/Breadth-first_search">http://en.wikipedia.org/wiki/Breadth-first_search</a>
+	 * @see <a href=
+	 *      "http://en.wikipedia.org/wiki/Breadth-first_search">http://en.wikipedia.org/wiki/Breadth-first_search</a>
 	 */
 	public String bfs(GraphNode<AnyType> start) {
 		resetVisits();
@@ -145,11 +140,10 @@ public class Graph<AnyType> {
 	/**
 	 * Depth First Search traversal of the graph
 	 * 
-	 * @param start
-	 *            starting point of the traversal
+	 * @param start starting point of the traversal
 	 * @return string representation of the DFS traversal
-	 * @see <a
-	 *      href="http://en.wikipedia.org/wiki/Depth-first_search">http://en.wikipedia.org/wiki/Depth-first_search</a>
+	 * @see <a href=
+	 *      "http://en.wikipedia.org/wiki/Depth-first_search">http://en.wikipedia.org/wiki/Depth-first_search</a>
 	 */
 	public String dfs(GraphNode<AnyType> start) {
 		resetVisits();
@@ -213,8 +207,9 @@ public class Graph<AnyType> {
 	 * 
 	 * @param start
 	 * @return result of the application of Dijkstra
-	 * @see <a
-	 *      href="http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm</a> <br/>
+	 * @see <a href=
+	 *      "http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm</a>
+	 *      <br/>
 	 *      <a href="http://www.algolist.com/code/java/Dijkstra%27s_algorithm">
 	 *      http://www.algolist.com/code/java/Dijkstra%27s_algorithm</a>
 	 */
@@ -223,8 +218,7 @@ public class Graph<AnyType> {
 		computeDistance(start);
 		for (int i = 0; i < size(); i++) {
 			GraphNode<AnyType> node = nodes.get(i);
-			str += "=>" + node + "|" + getShortestPathTo(node) + "("
-					+ node.distance + ")\n";
+			str += "=>" + node + "|" + getShortestPathTo(node) + "(" + node.distance + ")\n";
 		}
 		return str;
 	}

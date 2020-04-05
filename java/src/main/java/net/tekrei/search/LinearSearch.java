@@ -1,4 +1,4 @@
-package net.tekrei.search.impl;
+package net.tekrei.search;
 
 import net.tekrei.search.Search;
 

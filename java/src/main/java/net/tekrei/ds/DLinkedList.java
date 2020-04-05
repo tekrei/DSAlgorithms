@@ -1,6 +1,5 @@
-package net.tekrei.ds.impl;
+package net.tekrei.ds;
 
-import net.tekrei.ds.DLLNode;
 import net.tekrei.ds.LinkedList;
 
 /**

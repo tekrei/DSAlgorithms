@@ -1,7 +1,6 @@
-package net.tekrei.ds.impl;
+package net.tekrei.ds;
 
 import net.tekrei.ds.LinkedList;
-import net.tekrei.ds.SLLNode;
 
 /**
  * Singly linked list implementation

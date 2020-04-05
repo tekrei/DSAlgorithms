@@ -1,4 +1,4 @@
-package net.tekrei.ds.impl;
+package net.tekrei.ds;
 
 import java.util.Arrays;
 

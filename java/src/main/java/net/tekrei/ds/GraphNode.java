@@ -1,9 +1,6 @@
 package net.tekrei.ds;
 
-import net.tekrei.ds.impl.SLinkedList;
-
-public class GraphNode<AnyType> extends Node<AnyType> implements
-		Comparable<GraphNode<AnyType>> {
+public class GraphNode<AnyType> extends Node<AnyType> implements Comparable<GraphNode<AnyType>> {
 
 	// using adjacency list to store the
 	private SLinkedList<GraphNode<AnyType>> neighbors;
@@ -54,7 +51,7 @@ public class GraphNode<AnyType> extends Node<AnyType> implements
 	}
 
 	public int getNeighborCount() {
-		return neighbors.size();
+		return (neighbors != null) ? neighbors.size() : 0;
 	}
 
 	public boolean adjacent(GraphNode<AnyType> node) {

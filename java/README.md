@@ -1,4 +1,4 @@
-# DSAlgorithms
+# dsalgorithms-java
 My own Data Structures and Algorithm Implementations for practice.
 
 Please let me know any mistakes, bad code or improvements.

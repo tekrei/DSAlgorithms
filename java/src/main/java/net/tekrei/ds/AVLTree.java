@@ -1,6 +1,4 @@
-package net.tekrei.ds.impl;
-
-import net.tekrei.ds.BTreeNode;
+package net.tekrei.ds;
 
 /**
  * Implementation of AVL Tree - A balanced BST
