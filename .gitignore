@@ -8,3 +8,5 @@
 .project
 .pydevproject
 .vscode
+.idea/
+java/target/
