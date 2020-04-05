@@ -32,7 +32,7 @@ public class SearchTest {
         if (foundIndex == EXPECTED_INDEX) {
             System.out.println("Index found: " + foundIndex);
             System.out.println("LINEAR search TIME: " + (end - start));
-            System.out.println("/-----------------------------/");
+            System.out.println("------------------------------------------");
         } else {
             System.out.println("The linear search algorithm is not working correctly");
         }
@@ -46,7 +46,7 @@ public class SearchTest {
         if (foundIndex == EXPECTED_INDEX) {
             System.out.println("Index found: " + foundIndex);
             System.out.println("BINARY search TIME: " + (end - start));
-            System.out.println("/-----------------------------/");
+            System.out.println("------------------------------------------");
         } else {
             System.out.println("The binary search algorithm is not working correctly");
         }
@@ -60,7 +60,7 @@ public class SearchTest {
         if (foundIndex == EXPECTED_INDEX) {
             System.out.println("Index found: " + foundIndex);
             System.out.println("RECURSIVE BINARY search TIME: " + (end - start));
-            System.out.println("/-----------------------------/");
+            System.out.println("------------------------------------------");
         } else {
             System.out.println("The recursive binary search algorithm is not working correctly");
         }
@@ -74,7 +74,7 @@ public class SearchTest {
         if (foundIndex == EXPECTED_INDEX) {
             System.out.println("Index found: " + foundIndex);
             System.out.println("EXPONENTIAL search TIME: " + (end - start));
-            System.out.println("/-----------------------------/");
+            System.out.println("------------------------------------------");
         } else {
             System.out.println("The exponential search algorithm is not working correctly");
         }
