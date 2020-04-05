@@ -5,7 +5,7 @@ Created on May 20, 2015
 Priority Queue capable of storing with a priority
 Source: http://stackoverflow.com/questions/9289614/how-to-put-items-into-priority-queues
 '''
-from Queue import PriorityQueue
+from queue import PriorityQueue
 
 class PQueue(PriorityQueue):
     def __init__(self):

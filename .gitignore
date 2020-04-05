@@ -1,8 +1,10 @@
-*.pyc
-*.o
+**/*.pyc
+**/__pycache__
+**/*.o
 /Debug/
 .settings
 .classpath
 .cproject
 .project
 .pydevproject
+.vscode

@@ -1,42 +1,45 @@
-'''
+"""
 Created on May 16, 2015
 
 @author: tekrei
 Greedy solution to Knapsack problem
 Source: Introduction to Computation and Programming Using Python
-'''
-from Item import buildItems, weightInverse, value, density
+"""
+from item import build_items, weight_inverse, value, density
 
-def greedy(items, maxWeight, keyFcn):
-    assert type(items) == list and maxWeight >= 0
-    itemsCopy = sorted(items, key = keyFcn, reverse = True)
+
+def greedy(items: list, max_weight: float, key_func: callable):
+    assert type(items) == list and max_weight >= 0
+    items_copy = sorted(items, key=key_func, reverse=True)
     result = []
     totalVal = 0.0
-    totalWeight = 0.0
+    total_weight = 0.0
     i = 0
-    while totalWeight<maxWeight and i < len(items):
-        if (totalWeight + itemsCopy[i].getWeight()) <= maxWeight:
-            result.append(itemsCopy[i])
-            totalWeight += itemsCopy[i].getWeight()
-            totalVal += itemsCopy[i].getValue()
-        i+=1
+    while total_weight < max_weight and i < len(items):
+        if (total_weight + items_copy[i].getWeight()) <= max_weight:
+            result.append(items_copy[i])
+            total_weight += items_copy[i].getWeight()
+            totalVal += items_copy[i].getValue()
+        i += 1
     return (result, totalVal)
 
-def testGreedy(items, constraint, getKey):
-    taken, val = greedy(items, constraint, getKey)
-    print 'Total value of items taken = ' + str(val)
+
+def test_greedy(items: list, constraint: float, get_key: callable):
+    taken, val = greedy(items, constraint, get_key)
+    print("Total value of items taken = %s" % val)
     for item in taken:
-        print '\t', item
+        print("\t % s" % item)
 
-def testGreedys(maxWeight=20):
-    items = buildItems()
-    print 'Use greedy by value for knapsack of size maxWeight'
-    testGreedy(items, maxWeight, value)
-    print 'Use greedy by weight for knapsack of size maxWeight'
-    testGreedy(items, maxWeight, weightInverse)
-    print 'Use greedy by density for knapsack of size maxWeight'
-    testGreedy(items, maxWeight, density)
-    
 
-if __name__ == '__main__':
-    testGreedys()
+def test_greedys(max_constraint: float = 20):
+    items = build_items()
+    print("Use greedy by value for knapsack of size %s" % max_constraint)
+    test_greedy(items, max_constraint, value)
+    print("Use greedy by weight for knapsack of size %s" % max_constraint)
+    test_greedy(items, max_constraint, weight_inverse)
+    print("Use greedy by density for knapsack of size %s" % max_constraint)
+    test_greedy(items, max_constraint, density)
+
+
+if __name__ == "__main__":
+    test_greedys()

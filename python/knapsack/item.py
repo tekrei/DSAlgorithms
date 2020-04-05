@@ -4,6 +4,7 @@ Created on May 16, 2015
 @author: tekrei
 '''
 
+
 class Item(object):
     '''
     Item class for knapsack problem
@@ -16,21 +17,28 @@ class Item(object):
 
     def getName(self):
         return self.name
+
     def getValue(self):
         return self.value
+
     def getWeight(self):
         return self.weight
+
     def __str__(self):
         return '<' + self.name + ', ' + str(self.value) + ', ' + str(self.weight) + '>'
+
 
 def value(item):
     return item.getValue()
 
+
 def weight_inverse(item):
     return 1.0 / item.getWeight()
 
+
 def density(item):
     return item.getValue() / item.getWeight()
+
 
 def build_items():
     '''

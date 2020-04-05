@@ -6,7 +6,8 @@ Created on May 16, 2015
 Chapter 9 codes from Introduction to Computation and Programming Using Python 
 '''
 
-def isSubset(L1, L2):
+
+def is_subset(L1: list, L2: list):
     for e1 in L1:
         matched = False
         for e2 in L2:
@@ -17,7 +18,8 @@ def isSubset(L1, L2):
             return False
     return True
 
-def intersection(L1, L2):
+
+def intersection(L1: list, L2: list):
     tmp = []
     for e1 in L1:
         for e2 in L2:
@@ -30,27 +32,30 @@ def intersection(L1, L2):
             res.append(e)
     return res
 
-def getBinaryRep(n, numDigits):
+
+def get_binary_rep(n, digit_count):
     result = ''
     while n > 0:
         result = str(n % 2) + result
         n = n // 2
-    if len(result) > numDigits:
+    if len(result) > digit_count:
         raise ValueError('not enough digits')
-    for i in range(numDigits - len(result)):
+    for _ in range(digit_count - len(result)):
         result = '0' + result
     return result
 
-def genPowerSet(L):
-    powerSet = []
+
+def gen_power_set(L: list):
+    power_set = []
     for i in range(0, 2 ** len(L)):
-        binStr = getBinaryRep(i, len(L))
+        binary_str = get_binary_rep(i, len(L))
         subset = []
-        for j in range(len(binStr)):
-            if binStr[j] == '1':
+        for j in range(len(binary_str)):
+            if binary_str[j] == '1':
                 subset.append(L[j])
-        powerSet.append(subset)
-    return powerSet
+        power_set.append(subset)
+    return power_set
+
 
 if __name__ == '__main__':
     pass

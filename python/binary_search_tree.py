@@ -4,12 +4,15 @@ Created on May 16, 2015
 @author: tekrei
 '''
 import random
+from typing import Type
+
 
 class Node(object):
-    def __init__(self, data, left, right):
+    def __init__(self, data: any, left: object, right: object):
         self.data = data
         self.left = left
         self.right = right
+
 
 class BinarySearchTree(object):
     '''
@@ -22,7 +25,7 @@ class BinarySearchTree(object):
         '''
         self.root = None
 
-    def _find(self, node, data):
+    def _find(self, node: Type[Node], data: any):
         '''
         find helper
         '''
@@ -33,19 +36,19 @@ class BinarySearchTree(object):
         else:
             return self._find(node.right, data)
 
-    def find(self, data):
+    def find(self, data: any):
         '''
         find data in BST
         '''
         return self._find(self.root, data)
 
-    def insert(self, data):
+    def insert(self, data: any):
         '''
         insert new element to the BST
         '''
         self.root = self._insert(self.root, data)
 
-    def _insert(self, node, data):
+    def _insert(self, node: Type[Node], data: any):
         '''
         recursive insert helper
         '''
@@ -58,7 +61,7 @@ class BinarySearchTree(object):
         else:
             return Node(node.data, node.left, self._insert(node.right, data))
 
-    def lookup(self, node, data, parent=None):
+    def lookup(self, node: Type[Node], data: any, parent=None):
         """
         Lookup node containing data
 
@@ -77,7 +80,7 @@ class BinarySearchTree(object):
         else:
             return node, parent
 
-    def children_count(self, node):
+    def children_count(self, node: Type[Node]):
         """
         Returns the number of children for a given node
         @returns number of children: 0, 1, 2
@@ -89,7 +92,7 @@ class BinarySearchTree(object):
             count += 1
         return count
 
-    def delete(self, data):
+    def delete(self, data: any):
         """
         Delete node containing data
         @param data node's content to delete
@@ -128,7 +131,7 @@ class BinarySearchTree(object):
                 else:
                     parent.right = successor.right
 
-    def _inorder(self, node, datalist):
+    def _inorder(self, node: Type[Node], datalist: list):
         '''
         inorder traversal helper function
         '''
@@ -153,18 +156,16 @@ class BinarySearchTree(object):
             strrep += current + ', '
         return strrep[:-2] + ']'
 
-if __name__ == '__main__':
-    BST = BinarySearchTree()
-    NUMBERS = [random.randint(0, 25) for x in range(10)]
-    print NUMBERS
-    for n in NUMBERS:
-        BST.insert(n)
-    BST.insert(12)
-    BST.insert(6)
-    print BST
-    BST.delete(6)
-    BST.delete(12)
-    print BST
 
-        
-        
+if __name__ == '__main__':
+    bst = BinarySearchTree()
+    numbers = [random.randint(0, 25) for x in range(10)]
+    print(numbers)
+    for n in numbers:
+        bst.insert(n)
+    bst.insert(12)
+    bst.insert(6)
+    print(bst)
+    bst.delete(6)
+    bst.delete(12)
+    print(bst)
