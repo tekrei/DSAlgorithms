@@ -29,7 +29,6 @@ public class InterpolationSearch extends Search {
         int middleBound;
 
         while ((lowerBound <= upperBound) && (searchKey >= list.get(lowerBound) && (searchKey <= list.get(upperBound)))) {
-            //using interpolation formulae to find the best probable position for this element to exist
             middleBound = lowerBound + (((upperBound-lowerBound) /
                     (list.get(upperBound)-list.get(lowerBound))*(searchKey - list.get(lowerBound))));
 
