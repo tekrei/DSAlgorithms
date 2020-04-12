@@ -9,4 +9,10 @@
 .pydevproject
 .vscode
 .idea/
+**/*.code*
 java/target/
+**/CMakeFiles
+**/CMakeCache.txt
+**/Makefile
+*.cmake
+**/build
