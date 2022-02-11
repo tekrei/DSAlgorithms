@@ -6,8 +6,8 @@ authors = ["T. E. Kalayci <tekrei@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-numpy = "^1.18.2"
-matplotlib = "^3.2.1"
+numpy = "^1.22"
+matplotlib = "^3.5"
 
 [tool.poetry.dev-dependencies]
 

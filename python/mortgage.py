@@ -13,7 +13,7 @@ def find_payment(loan: float, rate: float, m: int):
     return loan * ((rate * (1 + rate) ** m) / ((1 + rate) ** m - 1))
 
 
-class MortgagePlots():
+class MortgagePlots:
     def __init__(self, loan, paid):
         self.loan = loan
         self.paid = [paid]
@@ -78,33 +78,49 @@ class FixedWithPayments(Mortgage):
         Mortgage.__init__(self, loan, rate, months)
         self.payments = payments
         self.paid = [loan * (payments / 100.0)]
-        self.legend = "Fixed, " + \
-            str(rate * 100) + "%, " + str(payments) + " points"
+        self.legend = "Fixed, " + str(rate * 100) + "%, " + str(payments) + " points"
 
 
 class TwoRate(Mortgage):
-    def __init__(self, loan: float, rate: float, months: int, teaser_rate, teaser_months):
+    def __init__(
+        self, loan: float, rate: float, months: int, teaser_rate, teaser_months
+    ):
         Mortgage.__init__(self, loan, teaser_rate, months)
         self.teaser_months = teaser_months
         self.teaser_rate = teaser_rate
         self.next_rate = rate / 12.0
-        self.legend = str(teaser_rate * 100) + "% for " + \
-            str(self.teaser_months) + " months,\n then " + str(rate * 100) + "%"
+        self.legend = (
+            str(teaser_rate * 100)
+            + "% for "
+            + str(self.teaser_months)
+            + " months,\n then "
+            + str(rate * 100)
+            + "%"
+        )
 
     def make_payment(self):
         if len(self.paid) == self.teaser_months + 1:
             self.rate = self.next_rate
             self.payment = find_payment(
-                self.owed[-1], self.rate, self.months - self.teaser_months)
+                self.owed[-1], self.rate, self.months - self.teaser_months
+            )
         Mortgage.make_payment(self)
 
 
-def compare_mortgages(amount: float, years: int, fixed_rate: float, payment: float, payment_rate: float, variable_rate_1: float, variable_rate_2: float, months: int):
+def compare_mortgages(
+    amount: float,
+    years: int,
+    fixed_rate: float,
+    payment: float,
+    payment_rate: float,
+    variable_rate_1: float,
+    variable_rate_2: float,
+    months: int,
+):
     total_months = years * 12
     fixed1 = Fixed(amount, fixed_rate, total_months)
     fixed2 = FixedWithPayments(amount, payment_rate, total_months, payment)
-    two_rate = TwoRate(amount, variable_rate_2,
-                       total_months, variable_rate_1, months)
+    two_rate = TwoRate(amount, variable_rate_2, total_months, variable_rate_1, months)
     morts = [fixed1, fixed2, two_rate]
     for _ in range(total_months):
         for mort in morts:
@@ -152,6 +168,14 @@ def plot_mortgages(morts: list, amount: float):
 
 
 if __name__ == "__main__":
-    compare_mortgages(amount=200000, years=30, fixed_rate=0.07, payment=3.25,
-                      payment_rate=0.05, variable_rate_1=0.045, variable_rate_2=0.095, months=48)
+    compare_mortgages(
+        amount=200000,
+        years=30,
+        fixed_rate=0.07,
+        payment=3.25,
+        payment_rate=0.05,
+        variable_rate_1=0.045,
+        variable_rate_2=0.095,
+        months=48,
+    )
     pylab.show()

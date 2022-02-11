@@ -1,14 +1,16 @@
-'''
+"""
 Created on May 16, 2015
 
 Greedy solution to 0/1 Knapsack problem
 Source: Introduction to Computation and Programming Using Python
-'''
+"""
 from item import build_items, Item
 from list_operations import gen_power_set
 
 
-def choose_best(pset: set, constraint: float, get_value: callable, get_weight: callable):
+def choose_best(
+    pset: set, constraint: float, get_value: callable, get_weight: callable
+):
     best_value = 0.0
     best_set = None
     for items in pset:
@@ -26,12 +28,11 @@ def choose_best(pset: set, constraint: float, get_value: callable, get_weight: c
 def test_best(max_constraint: float = 20):
     items = build_items()
     pset = gen_power_set(items)
-    taken, val = choose_best(pset, max_constraint,
-                             Item.getValue, Item.getWeight)
-    print('Total value of items taken = %s ' % val)
+    taken, val = choose_best(pset, max_constraint, Item.getValue, Item.getWeight)
+    print("Total value of items taken = %s " % val)
     for item in taken:
-        print('\t%s' % item)
+        print("\t%s" % item)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test_best()

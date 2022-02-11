@@ -1,6 +1,6 @@
-'''
+"""
 Created on May 13, 2015
-'''
+"""
 
 import random
 import timeit
@@ -9,9 +9,9 @@ from operator import mul
 
 
 def square_matrix_multiplication(matrix1, matrix2):
-    '''
+    """
     Usual matrix multiplication with O(n^3) complexity
-    '''
+    """
     result = np.zeros(matrix1.shape)
     count = matrix1.shape[1]
     for i in range(count):
@@ -21,14 +21,12 @@ def square_matrix_multiplication(matrix1, matrix2):
     return result
 
 
-if __name__ == '__main__':
-    '''
+if __name__ == "__main__":
+    """
     main method for matrix operations
-    '''
-    matrix1 = np.matrix([[random.randint(-10, 10)
-                          for x in range(5)] for y in range(5)])
-    matrix2 = np.matrix([[random.randint(-10, 10)
-                          for x in range(5)] for y in range(5)])
+    """
+    matrix1 = np.matrix([[random.randint(-10, 10) for x in range(5)] for y in range(5)])
+    matrix2 = np.matrix([[random.randint(-10, 10) for x in range(5)] for y in range(5)])
     print("%s %s" % (matrix1, matrix2))
     start_time = timeit.default_timer()
     print(square_matrix_multiplication(matrix1, matrix2))

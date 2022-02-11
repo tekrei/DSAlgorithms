@@ -1,17 +1,17 @@
-'''
+"""
 Created on May 13, 2015
 
 Algorithm examples from Introduction to Algorithms (3rd) book
-'''
+"""
 import random
 
 
 def max_subarray(A: list):
-    '''
+    """
     Variation of Kadane's algorithm
     Dynamic programming solution
     returns only the sum of the subarray
-    '''
+    """
     max_ending_here = max_so_far = A[0]
     for x in A[1:]:
         max_ending_here = max(x, max_ending_here + x)
@@ -20,10 +20,10 @@ def max_subarray(A: list):
 
 
 def maximum_subarray(data: list):
-    '''
+    """
     Dynamic programming solution for maximum subarray problem
     returns start and end index together with sum of the maximum subarray
-    '''
+    """
     new_sum = []
     new_sum.append(data[0])
     current_max = data[0]
@@ -50,7 +50,7 @@ def maximum_subarray(data: list):
     return begin, end, current_max
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     numbers = [random.randint(-10, 10) for x in range(10)]
     print("%s %s %s" % (numbers, maximum_subarray(numbers), max_subarray(numbers)))
     n2 = [0, -6, 4, -2, 4, -3, -10, 5, -4, 6]

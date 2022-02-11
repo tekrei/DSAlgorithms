@@ -1,16 +1,16 @@
-'''
+"""
 Created on May 13, 2015
 
 Various square root approximations
 Source: Introduction to Computation and Programming Using Python book
-'''
+"""
 import time
 
 
 def newton_raphson(y):
-    '''
+    """
     Newton-Raphson for square root
-    '''
+    """
     epsilon = 0.01
     ans = y / 2.0
     guess_count = 0
@@ -21,9 +21,9 @@ def newton_raphson(y):
 
 
 def exhaustive_enumeration(x):
-    '''
+    """
     Approximating the square root using exhaustive enumeration
-    '''
+    """
     epsilon = 0.01
     step = epsilon ** 2
     guess_count = 0
@@ -39,9 +39,9 @@ def exhaustive_enumeration(x):
 
 
 def bisection(x):
-    '''
+    """
     Bisection search to approximate square root
-    '''
+    """
     epsilon = 0.01
     guess_count = 0
     low = 0.0
@@ -58,19 +58,22 @@ def bisection(x):
     return ans, guess_count
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     numbers = [4, 9, 16, 25, 81, 144, 256, 262144]
     for x in numbers:
         print("-------%d------" % x)
 
         start_time = time.time()
-        print("Exhaustive enumeration %s (%fs)" %
-              (str(exhaustive_enumeration(x)), time.time() - start_time))
+        print(
+            "Exhaustive enumeration %s (%fs)"
+            % (str(exhaustive_enumeration(x)), time.time() - start_time)
+        )
 
         start_time = time.time()
-        print("Bisection %s (%fs)" %
-              (str(bisection(x)), time.time() - start_time))
+        print("Bisection %s (%fs)" % (str(bisection(x)), time.time() - start_time))
 
         start_time = time.time()
-        print("Newton Raphson %s (%fs)" %
-              (str(newton_raphson(x)), time.time() - start_time))
+        print(
+            "Newton Raphson %s (%fs)"
+            % (str(newton_raphson(x)), time.time() - start_time)
+        )

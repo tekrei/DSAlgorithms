@@ -1,6 +1,6 @@
-'''
+"""
 Created on May 16, 2015
-'''
+"""
 import random
 from typing import Type
 
@@ -13,20 +13,20 @@ class Node(object):
 
 
 class BinarySearchTree(object):
-    '''
+    """
     Binary Search Tree implementation
-    '''
+    """
 
     def __init__(self):
-        '''
+        """
         Constructor
-        '''
+        """
         self.root = None
 
     def _find(self, node: Type[Node], data: any):
-        '''
+        """
         find helper
-        '''
+        """
         if node == None or node.data == data:
             return node
         elif data < node.data:
@@ -35,21 +35,21 @@ class BinarySearchTree(object):
             return self._find(node.right, data)
 
     def find(self, data: any):
-        '''
+        """
         find data in BST
-        '''
+        """
         return self._find(self.root, data)
 
     def insert(self, data: any):
-        '''
+        """
         insert new element to the BST
-        '''
+        """
         self.root = self._insert(self.root, data)
 
     def _insert(self, node: Type[Node], data: any):
-        '''
+        """
         recursive insert helper
-        '''
+        """
         if node is None:
             return Node(data, None, None)
         if data == node.data:
@@ -130,9 +130,9 @@ class BinarySearchTree(object):
                     parent.right = successor.right
 
     def _inorder(self, node: Type[Node], datalist: list):
-        '''
+        """
         inorder traversal helper function
-        '''
+        """
         if node == None:
             return
         self._inorder(node.left, datalist)
@@ -140,22 +140,22 @@ class BinarySearchTree(object):
         self._inorder(node.right, datalist)
 
     def inorder(self):
-        '''
+        """
         inorder traversal
-        '''
+        """
         datalist = []
         self._inorder(self.root, datalist)
         return datalist
 
     def __str__(self):
         datalist = self.inorder()
-        strrep = '['
+        strrep = "["
         for current in datalist:
-            strrep += current + ', '
-        return strrep[:-2] + ']'
+            strrep += current + ", "
+        return strrep[:-2] + "]"
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     bst = BinarySearchTree()
     numbers = [random.randint(0, 25) for x in range(10)]
     print(numbers)

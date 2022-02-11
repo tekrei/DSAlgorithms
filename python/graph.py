@@ -1,34 +1,37 @@
-'''
+"""
 Created on May 16, 2015
 
 Graph implementation and algorithms
 Using adjacency list represantation for the graph
 Source: Introduction to Computation and Programming Using Python
-'''
+"""
 from collections import defaultdict
 from queue import PriorityQueue
 import time
 from typing import Type
 
 
-class Node():
+class Node:
     def __init__(self, name: str):
         self.name = name
 
-    def __str__(self): return self.name
+    def __str__(self):
+        return self.name
 
 
-class Edge():
-    def __init__(self, source: Type[Node], destination: Type[Node], weight: float = 1.0):
+class Edge:
+    def __init__(
+        self, source: Type[Node], destination: Type[Node], weight: float = 1.0
+    ):
         self.source = source
         self.destination = destination
         self.weight = weight
 
-    def __str__(self): return str(self.source) + \
-        '->(' + str(self.weight) + ')' + str(self.destination)
+    def __str__(self):
+        return str(self.source) + "->(" + str(self.weight) + ")" + str(self.destination)
 
 
-class Digraph():
+class Digraph:
     def __init__(self):
         self.nodes = []
         self.edges = defaultdict()
@@ -36,7 +39,7 @@ class Digraph():
 
     def addNode(self, node: Type[Node]):
         if node in self.nodes:
-            raise ValueError('Duplicate node')
+            raise ValueError("Duplicate node")
         else:
             self.nodes.append(node)
             self.edges[node] = []
@@ -45,8 +48,8 @@ class Digraph():
         src = edge.source
         dst = edge.destination
         wgt = edge.weight
-        if not(src in self.nodes and dst in self.nodes):
-            raise ValueError('Node not in graph')
+        if not (src in self.nodes and dst in self.nodes):
+            raise ValueError("Node not in graph")
         self.edges[src].append(dst)
         self.weight[src, dst] = wgt
 
@@ -54,7 +57,7 @@ class Digraph():
         try:
             return self.weight[source, destination]
         except KeyError:
-            return float('inf')
+            return float("inf")
 
     def adjacent(self, node: Type[Node]):
         try:
@@ -62,15 +65,17 @@ class Digraph():
         except KeyError:
             return []
 
-    def hasNode(self, node): return node in self.nodes
-    def vertices(self): return self.nodes
+    def hasNode(self, node):
+        return node in self.nodes
+
+    def vertices(self):
+        return self.nodes
 
     def __str__(self):
-        res = ''
+        res = ""
         for k in self.edges:
             for d in self.edges[k]:
-                res += str(k) + '->' + str(d) + \
-                    '('+str(self.getWeight(k, d))+')\n'
+                res += str(k) + "->" + str(d) + "(" + str(self.getWeight(k, d)) + ")\n"
         return res[:-1]
 
 
@@ -81,7 +86,13 @@ class Graph(Digraph):
         Digraph.addEdge(self, rev)
 
 
-def DFS(graph: Digraph, start: Type[Node], end: Type[Node], path: list = [], shortest: list = None):
+def DFS(
+    graph: Digraph,
+    start: Type[Node],
+    end: Type[Node],
+    path: list = [],
+    shortest: list = None,
+):
     path = path + [start]
     if start == end:
         return path
@@ -111,19 +122,19 @@ def BFS(graph: Graph, start: Type[Node], end: Type[Node]):
 
 
 def print_path(path: list) -> str:
-    result = ''
+    result = ""
     for i in range(len(path)):
         if i == len(path) - 1:
             result = result + str(path[i])
         else:
-            result = result + str(path[i]) + '->'
+            result = result + str(path[i]) + "->"
     return result
 
 
 def dijkstra(graph: Graph, start: Type[Node]):
-    '''
+    """
     works on non-negative weighted graphs
-    '''
+    """
     queue = PriorityQueue()
 
     dist = dict()
@@ -134,7 +145,7 @@ def dijkstra(graph: Graph, start: Type[Node]):
 
     for vertex in graph.vertices():
         if start != vertex:
-            dist[vertex] = float('inf')
+            dist[vertex] = float("inf")
             parent[vertex] = None
         queue.put((dist[vertex], time.time(), vertex))
     while not queue.empty():
@@ -151,17 +162,17 @@ def dijkstra(graph: Graph, start: Type[Node]):
 
 
 def dijsktra_test(start_node: Type[Node]):
-    '''
+    """
     dijkstra test
-    '''
+    """
     D, _ = dijkstra(graph, start_node)
-    result = ''
+    result = ""
     for n in nodes:
         result += str(start_node) + "->" + str(n) + "=" + str(D[n]) + "\n"
     return result
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     graph = Graph()
     nodes = []
     for name in range(10):
@@ -182,7 +193,5 @@ if __name__ == '__main__':
 
     print("BFS:%s" % print_path(BFS(graph, nodes[0], nodes[6])))
     print("DFS:%s" % print_path(DFS(graph, nodes[0], nodes[6])))
-    print("Dijkstra result for node %s:\n%s" %
-          (nodes[0], dijsktra_test(nodes[0])))
-    print("Dijkstra result for node %s:\n%s" %
-          (nodes[5], dijsktra_test(nodes[5])))
+    print("Dijkstra result for node %s:\n%s" % (nodes[0], dijsktra_test(nodes[0])))
+    print("Dijkstra result for node %s:\n%s" % (nodes[5], dijsktra_test(nodes[5])))

@@ -1,12 +1,12 @@
-'''
+"""
 Created on May 16, 2015
-'''
+"""
 
 
 class Item(object):
-    '''
+    """
     Item class for knapsack problem
-    '''
+    """
 
     def __init__(self, n, v, w):
         self.name = n
@@ -23,7 +23,7 @@ class Item(object):
         return self.weight
 
     def __str__(self):
-        return '<' + self.name + ', ' + str(self.value) + ', ' + str(self.weight) + '>'
+        return "<" + self.name + ", " + str(self.value) + ", " + str(self.weight) + ">"
 
 
 def value(item):
@@ -39,10 +39,10 @@ def density(item):
 
 
 def build_items():
-    '''
+    """
     build example items for test
-    '''
-    names = ['clock', 'painting', 'radio', 'vase', 'book', 'computer']
+    """
+    names = ["clock", "painting", "radio", "vase", "book", "computer"]
     vals = [175, 90, 20, 50, 10, 200]
     weights = [10, 9, 4, 2, 1, 20]
     items = []

@@ -1,32 +1,32 @@
-'''
+"""
 Created on May 3, 2015
 
 Note: The sorting algorithm used in most Python
 implementations is called timsort
 
-'''
+"""
 import random
 import time
 from math import floor
 
 
 def swap(data: list, i: int, j: int):
-    '''
+    """
     Simple swap function for lists
-    '''
+    """
     temp = data[i]
     data[i] = data[j]
     data[j] = temp
 
 
 def selection_sort(data: list):
-    '''
+    """
     Selection sort from Introduction to Algorithms (3rd) book
     Solution of Exercise 2.2-2
     In place comparison sort, O(n^2) complexity
     generally performs worse than Insertion Sort. Almost always
     outperforms bubble sort and gnome sort.
-    '''
+    """
     size = len(data)
     for j in range(0, size - 1):
         smallest = j
@@ -38,7 +38,7 @@ def selection_sort(data: list):
 
 
 def insertion_sort(data: list):
-    '''
+    """
     Insertion sort implementation O(n^2)
     Input: any list which contains comparable elements
     Output: sorted list
@@ -46,7 +46,7 @@ def insertion_sort(data: list):
     Simple algorithm, efficient for small data sets, more
     efficient than selection, bubble, etc.
     Adaptive, stable, in place and online.
-    '''
+    """
     for j in range(1, len(data)):
         key = data[j]
         i = j - 1
@@ -58,11 +58,11 @@ def insertion_sort(data: list):
 
 
 def merge(left: list, right: list):
-    '''
+    """
     Merge method of merge sort
     Input: lists to merge
     Output: merged result
-    '''
+    """
     left_index = 0
     right_index = 0
     result = []
@@ -83,12 +83,12 @@ def merge(left: list, right: list):
 
 
 def merge_sort(data: list):
-    '''
+    """
     Merge sort implementation
     Input: any list which contains comparable elements
     Output: sorted list
     O(nlgn)
-    '''
+    """
     if len(data) < 2:
         return data
     middle = int(len(data) / 2)
@@ -98,9 +98,9 @@ def merge_sort(data: list):
 
 
 def partition(data: list, left: int, right: int):
-    '''
+    """
     partition method of quick sort
-    '''
+    """
     pivot = data[right]
     i = left - 1
     for j in range(left, right):
@@ -112,9 +112,9 @@ def partition(data: list, left: int, right: int):
 
 
 def qsort(data: list, left: int, right: int):
-    '''
+    """
     Quick sort helper
-    '''
+    """
     if left < right:
         pivot = partition(data, left, right)
         qsort(data, left, pivot - 1)
@@ -122,22 +122,22 @@ def qsort(data: list, left: int, right: int):
 
 
 def quick_sort(data: list):
-    '''
+    """
     Quick sort implementation
     Input: any list which contains comparable elements
     Output: sorted list
     O(nlgn)
-    '''
+    """
     qsort(data, 0, len(data) - 1)
     return data
 
 
 def quick_sort2(data: list):
-    '''
+    """
     Another quick sort implementation
     Source:
     http://stackoverflow.com/questions/25690175/bucket-sort-faster-than-quicksort
-    '''
+    """
     if len(data) <= 1:
         return data
     low, pivot, high = partition2(data)
@@ -145,9 +145,9 @@ def quick_sort2(data: list):
 
 
 def partition2(data: list):
-    '''
+    """
     Partition for second quick sort
-    '''
+    """
     pivot, data = data[0], data[1:]
     low = [x for x in data if x <= pivot]
     high = [x for x in data if x > pivot]
@@ -155,9 +155,9 @@ def partition2(data: list):
 
 
 def bucket_sort(data: list):
-    '''
+    """
     Bucket sort implementation
-    '''
+    """
     maximum = max(data)
     buckets = []
     # using maximum/ buckets
@@ -175,12 +175,12 @@ def bucket_sort(data: list):
 
 
 def heap_sort(data: list):
-    '''
+    """
     Heap sort implementation
     Input: any list which contains comparable elements
     Output: sorted list
     O(nlgn)
-    '''
+    """
     size = len(data)
     heapify(data, size)
     end = size - 1
@@ -192,9 +192,9 @@ def heap_sort(data: list):
 
 
 def heapify(data: list, count: int):
-    '''
+    """
     Heap creation method for heap sort
-    '''
+    """
     start = int(floor((count - 2) / 2))
     while start >= 0:
         sift_down(data, start, count - 1)
@@ -202,9 +202,9 @@ def heapify(data: list, count: int):
 
 
 def sift_down(data: list, start: int, end: int):
-    '''
+    """
     Heap property restoration method for heap sort
-    '''
+    """
     root = start
     while int(floor(root * 2 + 1)) <= end:
         child = int(floor(root * 2 + 1))
@@ -220,12 +220,12 @@ def sift_down(data: list, start: int, end: int):
             root = temp
 
 
-if __name__ == '__main__':
-    '''
+if __name__ == "__main__":
+    """
     Main method to test sorting implementations
     Merge sort and heapsort achieve O(nlgn) upper bound
     in the worst case; quick_sort2 achieves it on average
-    '''
+    """
     numbers = [random.randint(0, 25) for x in range(100)]
     print("Unsorted Array:\t%s" % numbers)
     start_time = time.time()

@@ -1,9 +1,9 @@
-'''
+"""
 Created on May 15, 2015
 
 Examples from Chapter 12 Stochastic Programs, Probability, and Statistics of 
 Introduction to Computation and Programming Using Python
-'''
+"""
 import random
 from matplotlib import pylab
 
@@ -15,7 +15,7 @@ def CV(X):
     try:
         return std_dev(X) / mean
     except ZeroDivisionError:
-        return float('NaN')
+        return float("NaN")
 
 
 def std_dev(X):
@@ -46,14 +46,16 @@ def flip_sim(flips_per_trial, trial_count):
 
 
 def labelPlot(flip_count, trial_count, mean, sd):
-    pylab.title(str(trial_count) + ' trials of ' +
-                str(flip_count) + ' flips each')
-    pylab.xlabel('Fraction of Heads')
-    pylab.ylabel('Number of Trials')
+    pylab.title(str(trial_count) + " trials of " + str(flip_count) + " flips each")
+    pylab.xlabel("Fraction of Heads")
+    pylab.ylabel("Number of Trials")
     xmin, xmax = pylab.xlim()
     ymin, ymax = pylab.ylim()
-    pylab.text(xmin + (xmax - xmin) * 0.02, (ymax - ymin) / 2,
-               'Mean = ' + str(round(mean, 4)) + '\nSD = ' + str(round(sd, 4)))
+    pylab.text(
+        xmin + (xmax - xmin) * 0.02,
+        (ymax - ymin) / 2,
+        "Mean = " + str(round(mean, 4)) + "\nSD = " + str(round(sd, 4)),
+    )
 
 
 def flip_plot(min_exp, max_exp):
@@ -73,21 +75,23 @@ def flip_plot(min_exp, max_exp):
         ratios.append(head_count / float(tail_count))
         diffs.append(abs(head_count - tail_count))
 
-    pylab.title('Difference Between Heads and Tails')
-    pylab.xlabel('Number of Flips')
-    pylab.ylabel('Abs(#Heads - #Tails)')
-    pylab.rcParams['lines.markersize'] = 10
+    pylab.title("Difference Between Heads and Tails")
+    pylab.xlabel("Number of Flips")
+    pylab.ylabel("Abs(#Heads - #Tails)")
+    pylab.rcParams["lines.markersize"] = 10
     pylab.semilogx()
     pylab.semilogy()
-    pylab.plot(xAxis, diffs, 'bo')
+    pylab.plot(xAxis, diffs, "bo")
     pylab.figure()
-    pylab.title('Heads/Tails Ratios')
-    pylab.xlabel('Number of Flips')
-    pylab.ylabel('Heads/Tails')
+    pylab.title("Heads/Tails Ratios")
+    pylab.xlabel("Number of Flips")
+    pylab.ylabel("Heads/Tails")
     pylab.plot(xAxis, ratios)
 
 
-def make_plot(x_vals, yVals, title, xLabel, yLabel, style, newFig=False, logX=False, logY=False):
+def make_plot(
+    x_vals, yVals, title, xLabel, yLabel, style, newFig=False, logX=False, logY=False
+):
     """Plots x_vals vs. yVals with supplied titles and labels."""
     if newFig:
         pylab.figure()
@@ -148,18 +152,69 @@ def flip_plot1(min_exp, max_exp, trial_count):
         ratio_cvs.append(CV(ratios))
         diff_sds.append(std_dev(diffs))
         diff_cvs.append(CV(diffs))
-    make_plot(xAxis, mean_ratios, 'Mean Heads/Tails Ratios (' + str(trial_count) +
-              ' Trials)', 'Number of flips', 'Mean Heads/Tails', 'bo', logX=True)
-    make_plot(xAxis, ratiosSDs, 'SD Heads/Tails Ratios (' + str(trial_count) + ' Trials)',
-              'Number of Flips', 'Standard Deviation', 'bo', newFig=True, logX=True, logY=True)
-    make_plot(xAxis, mean_diffs, 'Mean abs(#Heads - #Tails) (' + str(trial_count) + ' Trials)',
-              'Number of Flips', 'Mean abs(#Heads - #Tails)', 'bo', newFig=True, logX=True, logY=True)
-    make_plot(xAxis, diff_sds, 'SD abs(#Heads - #Tails) (' + str(trial_count) + ' Trials)',
-              'Number of Flips', 'Standard Deviation', 'bo', newFig=True, logX=True, logY=True)
-    make_plot(xAxis, diff_cvs, 'Coeff. of Var. abs(#Heads - #Tails) (' + str(trial_count) +
-              ' Trials)', 'Number of Flips', 'Coeff. of Var.', 'bo', newFig=True, logX=True)
-    make_plot(xAxis, ratio_cvs, 'Coeff. of Var. Heads/Tails Ratio (' + str(trial_count) + ' Trials)',
-              'Number of Flips', 'Coeff. of Var.', 'bo', newFig=True, logX=True, logY=True)
+    make_plot(
+        xAxis,
+        mean_ratios,
+        "Mean Heads/Tails Ratios (" + str(trial_count) + " Trials)",
+        "Number of flips",
+        "Mean Heads/Tails",
+        "bo",
+        logX=True,
+    )
+    make_plot(
+        xAxis,
+        ratiosSDs,
+        "SD Heads/Tails Ratios (" + str(trial_count) + " Trials)",
+        "Number of Flips",
+        "Standard Deviation",
+        "bo",
+        newFig=True,
+        logX=True,
+        logY=True,
+    )
+    make_plot(
+        xAxis,
+        mean_diffs,
+        "Mean abs(#Heads - #Tails) (" + str(trial_count) + " Trials)",
+        "Number of Flips",
+        "Mean abs(#Heads - #Tails)",
+        "bo",
+        newFig=True,
+        logX=True,
+        logY=True,
+    )
+    make_plot(
+        xAxis,
+        diff_sds,
+        "SD abs(#Heads - #Tails) (" + str(trial_count) + " Trials)",
+        "Number of Flips",
+        "Standard Deviation",
+        "bo",
+        newFig=True,
+        logX=True,
+        logY=True,
+    )
+    make_plot(
+        xAxis,
+        diff_cvs,
+        "Coeff. of Var. abs(#Heads - #Tails) (" + str(trial_count) + " Trials)",
+        "Number of Flips",
+        "Coeff. of Var.",
+        "bo",
+        newFig=True,
+        logX=True,
+    )
+    make_plot(
+        xAxis,
+        ratio_cvs,
+        "Coeff. of Var. Heads/Tails Ratio (" + str(trial_count) + " Trials)",
+        "Number of Flips",
+        "Coeff. of Var.",
+        "bo",
+        newFig=True,
+        logX=True,
+        logY=True,
+    )
 
 
 def show_error_bars(minFlips, max_exp, trial_count):
@@ -174,12 +229,12 @@ def show_error_bars(minFlips, max_exp, trial_count):
         exp += 1
     pylab.errorbar(x_vals, means, yerr=2 * pylab.array(sds))
     pylab.semilogx()
-    pylab.title('Mean Fraction of Heads (' + str(trial_count) + ')')
-    pylab.xlabel('Number of flips')
-    pylab.ylabel('Fraction of heads & 95% confidence')
+    pylab.title("Mean Fraction of Heads (" + str(trial_count) + ")")
+    pylab.xlabel("Number of flips")
+    pylab.ylabel("Fraction of heads & 95% confidence")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # for i in range(10):
     #    print i, flip_sim(1000, 10)
     # flip_plot(4, 20)
@@ -187,7 +242,7 @@ if __name__ == '__main__':
     x = [random.randint(0, 1000) for x in range(1000)]
     print(x, std_dev(x))
     random.seed(0)
-    #makeHistogramPlots(100, 1000, 100000)
+    # makeHistogramPlots(100, 1000, 100000)
     show_error_bars(3, 10, 100)
     pylab.show()
 

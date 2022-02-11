@@ -1,8 +1,8 @@
-'''
+"""
 Created on May 16, 2015
 
 Chapter 9 codes from Introduction to Computation and Programming Using Python 
-'''
+"""
 
 
 def is_subset(L1: list, L2: list):
@@ -26,20 +26,20 @@ def intersection(L1: list, L2: list):
     # build without duplicates
     res = []
     for e in tmp:
-        if not(e in res):
+        if not (e in res):
             res.append(e)
     return res
 
 
 def get_binary_rep(n, digit_count):
-    result = ''
+    result = ""
     while n > 0:
         result = str(n % 2) + result
         n = n // 2
     if len(result) > digit_count:
-        raise ValueError('not enough digits')
+        raise ValueError("not enough digits")
     for _ in range(digit_count - len(result)):
-        result = '0' + result
+        result = "0" + result
     return result
 
 
@@ -49,11 +49,11 @@ def gen_power_set(L: list):
         binary_str = get_binary_rep(i, len(L))
         subset = []
         for j in range(len(binary_str)):
-            if binary_str[j] == '1':
+            if binary_str[j] == "1":
                 subset.append(L[j])
         power_set.append(subset)
     return power_set
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     pass

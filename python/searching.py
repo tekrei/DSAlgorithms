@@ -1,16 +1,16 @@
-'''
+"""
 Created on May 15, 2015
 
 Various search algorithms
 Source: Introduction to Computation and Programming Using Python
-'''
+"""
 import random
 
 
 def b_search(L: list, e: any, low: int, high: int):
     if high == low:
         return L[low] == e
-    mid = (low + high)//2
+    mid = (low + high) // 2
     if L[mid] == e:
         return True
     elif L[mid] > e:
@@ -48,10 +48,17 @@ def simple_check(elements: list, e: any):
     return e in elements
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # generate random 25 numbers as list
     numbers = [random.randint(-10, 10) for x in range(25)]
     print("%s" % sorted(numbers))
     for x in range(-10, 11):
-        print("%s %s %s %s" % (x, simple_check(numbers, x),
-                               linear_search(numbers, x), binary_search(sorted(numbers), x)))
+        print(
+            "%s %s %s %s"
+            % (
+                x,
+                simple_check(numbers, x),
+                linear_search(numbers, x),
+                binary_search(sorted(numbers), x),
+            )
+        )
