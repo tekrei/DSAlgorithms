@@ -1,8 +1,6 @@
 '''
 Created on May 13, 2015
 
-@author: tekrei
-
 Various square root approximations
 Source: Introduction to Computation and Programming Using Python book
 '''

@@ -1,7 +1,9 @@
 # dsalgorithms-python
+
 My own Data Structures and Algorithm Implementations for practice in Python.
 
 ## Poetry
+
 This repository uses [poetry Python package and dependency manager](https://python-poetry.org/).
 
 - Init interactively `poetry init`
@@ -14,4 +16,5 @@ This repository uses [poetry Python package and dependency manager](https://pyth
 - Open virtualenv `poetry shell`
 
 ### Revision notes
-- 5 April 2020: Updated codes to Python v3 and formatted according to [PEP 8](https://www.python.org/dev/peps/pep-0008/), added [type hints](https://docs.python.org/3/library/typing.html) and [poetry](https://python-poetry.org/) for required packages, 
+
+- 5 April 2020: Updated codes to Python v3 and formatted according to [PEP 8](https://www.python.org/dev/peps/pep-0008/), added [type hints](https://docs.python.org/3/library/typing.html) and [poetry](https://python-poetry.org/) for required packages,

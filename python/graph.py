@@ -1,7 +1,6 @@
 '''
 Created on May 16, 2015
 
-@author: tekrei
 Graph implementation and algorithms
 Using adjacency list represantation for the graph
 Source: Introduction to Computation and Programming Using Python

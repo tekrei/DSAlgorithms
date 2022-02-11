@@ -1,7 +1,5 @@
 '''
 Created on May 16, 2015
-
-@author: tekrei
 '''
 import random
 from typing import Type

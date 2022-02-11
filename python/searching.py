@@ -1,8 +1,6 @@
 '''
 Created on May 15, 2015
 
-@author: tekrei
-
 Various search algorithms
 Source: Introduction to Computation and Programming Using Python
 '''

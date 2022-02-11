@@ -1,7 +1,6 @@
 '''
 Created on May 15, 2015
 
-@author: tekrei
 Examples from Chapter 12 Stochastic Programs, Probability, and Statistics of 
 Introduction to Computation and Programming Using Python
 '''

@@ -1,7 +1,6 @@
 '''
 Created on May 16, 2015
 
-@author: tekrei
 Greedy solution to 0/1 Knapsack problem
 Source: Introduction to Computation and Programming Using Python
 '''

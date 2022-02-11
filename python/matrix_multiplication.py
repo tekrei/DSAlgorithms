@@ -1,7 +1,5 @@
 '''
 Created on May 13, 2015
-
-@author: tekrei
 '''
 
 import random

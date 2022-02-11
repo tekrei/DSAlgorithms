@@ -1,7 +1,6 @@
 '''
 Created on May 17, 2015
 
-@author: tekrei
 Generate HUFFMAN code
 Source: http://rosettacode.org/wiki/Huffman_coding#Python
 http://paddy3118.blogspot.com.tr/2009/03/huffman-encoding-in-python.html

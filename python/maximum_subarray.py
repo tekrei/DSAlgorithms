@@ -1,8 +1,6 @@
 '''
 Created on May 13, 2015
 
-@author: tekrei
-
 Algorithm examples from Introduction to Algorithms (3rd) book
 '''
 import random

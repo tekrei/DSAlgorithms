@@ -1,7 +1,6 @@
 """
 Created on May 16, 2015
 
-@author: tekrei
 Greedy solution to Knapsack problem
 Source: Introduction to Computation and Programming Using Python
 """

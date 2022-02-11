@@ -1,8 +1,6 @@
 '''
 Created on May 16, 2015
 
-@author: tekrei
-
 Chapter 9 codes from Introduction to Computation and Programming Using Python 
 '''
 

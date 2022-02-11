@@ -1,7 +1,6 @@
 """
 Created on May 15, 2015
 
-@author: tekrei
 Plotting example from Introduction to Computation and Programming Using Python
 """
 from matplotlib import pylab

@@ -1,8 +1,6 @@
 '''
 Created on May 3, 2015
 
-@author: tekrei
-
 Note: The sorting algorithm used in most Python
 implementations is called timsort
 
