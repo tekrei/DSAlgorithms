@@ -7,10 +7,10 @@ authors = ["T. E. Kalayci <tekrei@gmail.com>"]
 [tool.poetry.dependencies]
 python = "^3.11"
 numpy = "*"
-matplotlib = "^3.8"
+matplotlib = "*"
 
 [tool.poetry.dev-dependencies]
-autopep8 = "^2.0"
+autopep8 = "*"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
