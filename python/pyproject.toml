@@ -5,9 +5,10 @@ description = ""
 authors = ["T. E. Kalayci <tekrei@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.12"
 numpy = "*"
 matplotlib = "*"
+pandas = "*"
 
 [tool.poetry.dev-dependencies]
 autopep8 = "*"
