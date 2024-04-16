@@ -1,0 +1,19 @@
+{
+    "image": "mcr.microsoft.com/devcontainers/python:3.12",
+    "features": {
+        "ghcr.io/devcontainers-contrib/features/poetry:2": {
+            "version": "latest"
+        },
+        "ghcr.io/devcontainers-contrib/features/maven-sdkman:2": {
+            "version": "latest",
+            "jdkVersion": "latest",
+            "jdkDistro": "ms"
+        }
+    },
+    "postCreateCommand": "cd python && poetry update",
+    "customizations": {
+        "vscode": {
+            "extensions": []        
+        }
+    }
+  }
