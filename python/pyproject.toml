@@ -1,18 +1,29 @@
-[tool.poetry]
+[project]
+authors = [
+    {name = "T. E. Kalayci"},
+]
+license = {text = "Apache-2.0"}
 name = "dsalgorithms-python"
 version = "0.1.0"
 description = ""
-authors = ["T. E. Kalayci <tekrei@gmail.com>"]
 
-[tool.poetry.dependencies]
-python = "^3.12"
-numpy = "*"
-matplotlib = "*"
-pandas = "*"
+requires-python = ">=3.12"
+dependencies = [
+    "numpy",
+    "matplotlib",
+    "pandas",
+]
 
-[tool.poetry.dev-dependencies]
-autopep8 = "*"
+[dependency-groups]
+dev = [
+    "autopep8",
+    "black",
+    "isort",
+]
 
+
+[tool.pdm.build]
+includes = []
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"

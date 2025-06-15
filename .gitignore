@@ -16,3 +16,4 @@ java/target/
 **/Makefile
 *.cmake
 **/build
+.venv
