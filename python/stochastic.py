@@ -1,16 +1,17 @@
 """
 Created on May 15, 2015
 
-Examples from Chapter 12 Stochastic Programs, Probability, and Statistics of 
+Examples from Chapter 12 Stochastic Programs, Probability, and Statistics of
 Introduction to Computation and Programming Using Python
 """
+
 import random
-from matplotlib import pylab
+from matplotlib import pyplot
+import numpy as np
 
 
-def CV(X):
-    """Assumes that X is a list of numbers.
-    Returns the coefficient of variation for X"""
+def CV(X: list) -> float:
+    """Returns the coefficient of variation for X"""
     mean = sum(X) / float(len(X))
     try:
         return std_dev(X) / mean
@@ -18,9 +19,8 @@ def CV(X):
         return float("NaN")
 
 
-def std_dev(X):
-    """Assumes that X is a list of numbers.
-    Returns the standard deviation of X"""
+def std_dev(X: list) -> float:
+    """Returns the standard deviation of X"""
     mean = float(sum(X)) / len(X)
     tot = 0.0
     for x in X:
@@ -28,7 +28,7 @@ def std_dev(X):
     return (tot / len(X)) ** 0.5  # Square root of mean difference
 
 
-def flip(flip_count):
+def flip(flip_count: int) -> float:
     heads = 0.0
     for _ in range(flip_count):
         if random.random() < 0.5:
@@ -36,7 +36,7 @@ def flip(flip_count):
     return heads / flip_count
 
 
-def flip_sim(flips_per_trial, trial_count):
+def flip_sim(flips_per_trial: int, trial_count: int):
     heads_frac = []
     for _ in range(trial_count):
         heads_frac.append(flip(flips_per_trial))
@@ -45,28 +45,28 @@ def flip_sim(flips_per_trial, trial_count):
     return (heads_frac, mean, sd)
 
 
-def labelPlot(flip_count, trial_count, mean, sd):
-    pylab.title(str(trial_count) + " trials of " + str(flip_count) + " flips each")
-    pylab.xlabel("Fraction of Heads")
-    pylab.ylabel("Number of Trials")
-    xmin, xmax = pylab.xlim()
-    ymin, ymax = pylab.ylim()
-    pylab.text(
+def label_plot(flip_count: int, trial_count: int, mean: float, sd: float):
+    pyplot.title(str(trial_count) + " trials of " + str(flip_count) + " flips each")
+    pyplot.xlabel("Fraction of Heads")
+    pyplot.ylabel("Number of Trials")
+    xmin, xmax = pyplot.xlim()
+    ymin, ymax = pyplot.ylim()
+    pyplot.text(
         xmin + (xmax - xmin) * 0.02,
         (ymax - ymin) / 2,
         "Mean = " + str(round(mean, 4)) + "\nSD = " + str(round(sd, 4)),
     )
 
 
-def flip_plot(min_exp, max_exp):
+def flip_plot(min_exp: int, max_exp: int):
     """Assumes min_exp and max_exp positive integers; min_exp < max_exp
     Plots results of 2**min_exp to 2**max_exp coin flips"""
     ratios = []
     diffs = []
-    xAxis = []
+    x_axis = []
     for exp in range(min_exp, max_exp + 1):
-        xAxis.append(2 ** exp)
-    for flip_count in xAxis:
+        x_axis.append(2**exp)
+    for flip_count in x_axis:
         head_count = 0
         for _ in range(flip_count):
             if random.random() < 0.5:
@@ -75,48 +75,56 @@ def flip_plot(min_exp, max_exp):
         ratios.append(head_count / float(tail_count))
         diffs.append(abs(head_count - tail_count))
 
-    pylab.title("Difference Between Heads and Tails")
-    pylab.xlabel("Number of Flips")
-    pylab.ylabel("Abs(#Heads - #Tails)")
-    pylab.rcParams["lines.markersize"] = 10
-    pylab.semilogx()
-    pylab.semilogy()
-    pylab.plot(xAxis, diffs, "bo")
-    pylab.figure()
-    pylab.title("Heads/Tails Ratios")
-    pylab.xlabel("Number of Flips")
-    pylab.ylabel("Heads/Tails")
-    pylab.plot(xAxis, ratios)
+    pyplot.title("Difference Between Heads and Tails")
+    pyplot.xlabel("Number of Flips")
+    pyplot.ylabel("Abs(#Heads - #Tails)")
+    pyplot.rcParams["lines.markersize"] = 10
+    pyplot.semilogx()
+    pyplot.semilogy()
+    pyplot.plot(x_axis, diffs, "bo")
+    pyplot.figure()
+    pyplot.title("Heads/Tails Ratios")
+    pyplot.xlabel("Number of Flips")
+    pyplot.ylabel("Heads/Tails")
+    pyplot.plot(x_axis, ratios)
 
 
 def make_plot(
-    x_vals, yVals, title, xLabel, yLabel, style, newFig=False, logX=False, logY=False
+    x_vals,
+    y_vals,
+    title,
+    x_label,
+    y_label,
+    style,
+    new_fig=False,
+    log_x=False,
+    log_y=False,
 ):
     """Plots x_vals vs. yVals with supplied titles and labels."""
-    if newFig:
-        pylab.figure()
-    pylab.title(title)
-    pylab.xlabel(xLabel)
-    pylab.ylabel(yLabel)
-    pylab.plot(x_vals, yVals, style)
-    if logX:
-        pylab.semilogx()
-    if logY:
-        pylab.semilogy()
+    if new_fig:
+        pyplot.figure()
+    pyplot.title(title)
+    pyplot.xlabel(x_label)
+    pyplot.ylabel(y_label)
+    pyplot.plot(x_vals, y_vals, style)
+    if log_x:
+        pyplot.semilogx()
+    if log_y:
+        pyplot.semilogy()
 
 
-def makeHistogramPlots(flip_count1, flip_count2, trial_count):
+def histogram_plots(flip_count1, flip_count2, trial_count):
     val1, mean1, sd1 = flip_sim(flip_count1, trial_count)
-    pylab.hist(val1, bins=20)
-    xmin, xmax = pylab.xlim()
-    ymin, ymax = pylab.ylim()
-    labelPlot(flip_count1, trial_count, mean1, sd1)
-    pylab.figure()
+    pyplot.hist(val1, bins=20)
+    xmin, xmax = pyplot.xlim()
+    ymin, ymax = pyplot.ylim()
+    label_plot(flip_count1, trial_count, mean1, sd1)
+    pyplot.figure()
     val2, mean2, sd2 = flip_sim(flip_count2, trial_count)
-    pylab.hist(val2, bins=20)
-    pylab.xlim(xmin, xmax)
-    pylab.ylim(ymin, ymax)
-    labelPlot(flip_count2, trial_count, mean2, sd2)
+    pyplot.hist(val2, bins=20)
+    pyplot.xlim(xmin, xmax)
+    pyplot.ylim(ymin, ymax)
+    label_plot(flip_count2, trial_count, mean2, sd2)
 
 
 def run_trial(flip_count):
@@ -138,7 +146,7 @@ def flip_plot1(min_exp, max_exp, trial_count):
     ratio_cvs, diff_cvs = [], []
     xAxis = []
     for exp in range(min_exp, max_exp + 1):
-        xAxis.append(2 ** exp)
+        xAxis.append(2**exp)
     for flip_count in xAxis:
         ratios = []
         diffs = []
@@ -159,7 +167,7 @@ def flip_plot1(min_exp, max_exp, trial_count):
         "Number of flips",
         "Mean Heads/Tails",
         "bo",
-        logX=True,
+        log_x=True,
     )
     make_plot(
         xAxis,
@@ -168,9 +176,9 @@ def flip_plot1(min_exp, max_exp, trial_count):
         "Number of Flips",
         "Standard Deviation",
         "bo",
-        newFig=True,
-        logX=True,
-        logY=True,
+        new_fig=True,
+        log_x=True,
+        log_y=True,
     )
     make_plot(
         xAxis,
@@ -179,9 +187,9 @@ def flip_plot1(min_exp, max_exp, trial_count):
         "Number of Flips",
         "Mean abs(#Heads - #Tails)",
         "bo",
-        newFig=True,
-        logX=True,
-        logY=True,
+        new_fig=True,
+        log_x=True,
+        log_y=True,
     )
     make_plot(
         xAxis,
@@ -190,9 +198,9 @@ def flip_plot1(min_exp, max_exp, trial_count):
         "Number of Flips",
         "Standard Deviation",
         "bo",
-        newFig=True,
-        logX=True,
-        logY=True,
+        new_fig=True,
+        log_x=True,
+        log_y=True,
     )
     make_plot(
         xAxis,
@@ -201,8 +209,8 @@ def flip_plot1(min_exp, max_exp, trial_count):
         "Number of Flips",
         "Coeff. of Var.",
         "bo",
-        newFig=True,
-        logX=True,
+        new_fig=True,
+        log_x=True,
     )
     make_plot(
         xAxis,
@@ -211,40 +219,35 @@ def flip_plot1(min_exp, max_exp, trial_count):
         "Number of Flips",
         "Coeff. of Var.",
         "bo",
-        newFig=True,
-        logX=True,
-        logY=True,
+        new_fig=True,
+        log_x=True,
+        log_y=True,
     )
 
 
-def show_error_bars(minFlips, max_exp, trial_count):
+def show_error_bars(min_flips: int, max_exp: int, trial_count: int):
     means, sds = [], []
     x_vals, _ = [], []
-    exp = minFlips
+    exp = min_flips
     while exp <= max_exp:
-        x_vals.append(2 ** exp)
-        _, mean, sd = flip_sim(2 ** exp, trial_count)
+        x_vals.append(2**exp)
+        _, mean, sd = flip_sim(2**exp, trial_count)
         means.append(mean)
         sds.append(sd)
         exp += 1
-    pylab.errorbar(x_vals, means, yerr=2 * pylab.array(sds))
-    pylab.semilogx()
-    pylab.title("Mean Fraction of Heads (" + str(trial_count) + ")")
-    pylab.xlabel("Number of flips")
-    pylab.ylabel("Fraction of heads & 95% confidence")
+    pyplot.errorbar(x_vals, means, yerr=2 * np.array(sds))
+    pyplot.semilogx()
+    pyplot.title("Mean Fraction of Heads (" + str(trial_count) + ")")
+    pyplot.xlabel("Number of flips")
+    pyplot.ylabel("Fraction of heads & 95% confidence")
 
 
 if __name__ == "__main__":
-    # for i in range(10):
-    #    print i, flip_sim(1000, 10)
-    # flip_plot(4, 20)
-    # flip_plot1(4, 20, 20)
-    x = [random.randint(0, 1000) for x in range(1000)]
+    x = [random.randint(0, 1000) for _ in range(1000)]
     print(x, std_dev(x))
     random.seed(0)
-    # makeHistogramPlots(100, 1000, 100000)
     show_error_bars(3, 10, 100)
-    pylab.show()
+    pyplot.show()
 
 """
 Law of large numbers (LLN): the average of the results obtained from a large number of trials should be 

@@ -2,11 +2,11 @@
 Created on May 16, 2015
 """
 import random
-from typing import Type
+from typing import Any, Optional
 
 
 class Node(object):
-    def __init__(self, data: any, left: object, right: object):
+    def __init__(self, data: Any, left, right):
         self.data = data
         self.left = left
         self.right = right
@@ -21,9 +21,9 @@ class BinarySearchTree(object):
         """
         Constructor
         """
-        self.root = None
+        self.root: Optional[Node] = None
 
-    def _find(self, node: Type[Node], data: any):
+    def _find(self, node: Optional[Node], data: Any):
         """
         find helper
         """
@@ -34,19 +34,19 @@ class BinarySearchTree(object):
         else:
             return self._find(node.right, data)
 
-    def find(self, data: any):
+    def find(self, data: Any):
         """
         find data in BST
         """
         return self._find(self.root, data)
 
-    def insert(self, data: any):
+    def insert(self, data: Any):
         """
         insert new element to the BST
         """
         self.root = self._insert(self.root, data)
 
-    def _insert(self, node: Type[Node], data: any):
+    def _insert(self, node: Optional[Node], data: Any):
         """
         recursive insert helper
         """
@@ -59,7 +59,7 @@ class BinarySearchTree(object):
         else:
             return Node(node.data, node.left, self._insert(node.right, data))
 
-    def lookup(self, node: Type[Node], data: any, parent=None):
+    def lookup(self, node: Optional[Node], data: Any, parent: Optional[Node] = None) -> tuple[Optional[Node], Optional[Node]]:
         """
         Lookup node containing data
 
@@ -67,6 +67,8 @@ class BinarySearchTree(object):
         @param parent node's parent
         @returns node and node's parent if found or None, None
         """
+        if node is None:
+            return None, None
         if data < node.data:
             if node.left is None:
                 return None, None
@@ -78,7 +80,7 @@ class BinarySearchTree(object):
         else:
             return node, parent
 
-    def children_count(self, node: Type[Node]):
+    def children_count(self, node: Node):
         """
         Returns the number of children for a given node
         @returns number of children: 0, 1, 2
@@ -90,7 +92,7 @@ class BinarySearchTree(object):
             count += 1
         return count
 
-    def delete(self, data: any):
+    def delete(self, data: Any):
         """
         Delete node containing data
         @param data node's content to delete
@@ -101,11 +103,12 @@ class BinarySearchTree(object):
             children_count = self.children_count(node)
             if children_count == 0:
                 # If node has no children then remove it
-                if parent.left is node:
-                    parent.left = None
-                else:
-                    parent.right = None
-                del node
+                if parent:
+                    if parent.left is node:
+                        parent.left = None
+                    else:
+                        parent.right = None
+                    del node
             elif children_count == 1:
                 if node.left:
                     child = node.left
@@ -129,7 +132,7 @@ class BinarySearchTree(object):
                 else:
                     parent.right = successor.right
 
-    def _inorder(self, node: Type[Node], datalist: list):
+    def _inorder(self, node: Optional[Node], datalist: list):
         """
         inorder traversal helper function
         """

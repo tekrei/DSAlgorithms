@@ -4,10 +4,11 @@ Created on May 16, 2015
 Greedy solution to Knapsack problem
 Source: Introduction to Computation and Programming Using Python
 """
+from collections.abc import Callable
 from item import build_items, weight_inverse, value, density
 
 
-def greedy(items: list, max_weight: float, key_func: callable):
+def greedy(items: list, max_weight: float, key_func: Callable) -> tuple[list, float]:
     assert type(items) == list and max_weight >= 0
     items_copy = sorted(items, key=key_func, reverse=True)
     result = []
@@ -23,7 +24,7 @@ def greedy(items: list, max_weight: float, key_func: callable):
     return (result, totalVal)
 
 
-def test_greedy(items: list, constraint: float, get_key: callable):
+def test_greedy(items: list, constraint: float, get_key: Callable):
     taken, val = greedy(items, constraint, get_key)
     print("Total value of items taken = %s" % val)
     for item in taken:

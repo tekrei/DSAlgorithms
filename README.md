@@ -8,7 +8,7 @@ Please let me know any mistakes, bad code or improvements and feel free to fork 
 
 ### General
 
-* [Introduction to Algorithms (3rd) By Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest and Clifford Stein](https://mitpress.mit.edu/books/introduction-algorithms)
+* [Introduction to Algorithms](https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/)
 * [Dictionary of Algorithms and Data Structures](https://xlinux.nist.gov/dads/)
 * [Big-O Algorithm Complexity Cheat Sheet](https://bigocheatsheet.com/)
 * [Open Data Structures](https://opendatastructures.org/)

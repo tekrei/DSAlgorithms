@@ -4,10 +4,11 @@ Created on May 15, 2015
 Various search algorithms
 Source: Introduction to Computation and Programming Using Python
 """
+from typing import Any
 import random
 
 
-def b_search(L: list, e: any, low: int, high: int):
+def b_search(L: list, e: Any, low: int, high: int) -> bool:
     if high == low:
         return L[low] == e
     mid = (low + high) // 2
@@ -22,7 +23,7 @@ def b_search(L: list, e: any, low: int, high: int):
         return b_search(L, e, mid + 1, high)
 
 
-def binary_search(elements: list, e: any):
+def binary_search(elements: list, e: Any) -> bool:
     """Recursive binary search
     Assumes elements is a list, the elements of which are in ascending order.
     Returns True if e is in elements and False otherwise"""
@@ -32,7 +33,7 @@ def binary_search(elements: list, e: any):
         return b_search(elements, e, 0, len(elements) - 1)
 
 
-def linear_search(elements: list, e: any):
+def linear_search(elements: list, e: Any) -> bool:
     """Assumes elements is a list.
     Returns True if e is in elements and False otherwise"""
     for i in range(len(elements)):
@@ -41,7 +42,7 @@ def linear_search(elements: list, e: any):
     return False
 
 
-def simple_check(elements: list, e: any):
+def simple_check(elements: list, e: Any) -> bool:
     """
     Simple check using *in* operator of Python
     """

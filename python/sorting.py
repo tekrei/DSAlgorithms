@@ -19,7 +19,7 @@ def swap(data: list, i: int, j: int):
     data[j] = temp
 
 
-def selection_sort(data: list):
+def selection_sort(data: list) -> list:
     """
     Selection sort from Introduction to Algorithms (3rd) book
     Solution of Exercise 2.2-2
@@ -37,7 +37,7 @@ def selection_sort(data: list):
     return data
 
 
-def insertion_sort(data: list):
+def insertion_sort(data: list) -> list:
     """
     Insertion sort implementation O(n^2)
     Input: any list which contains comparable elements
@@ -57,7 +57,7 @@ def insertion_sort(data: list):
     return data
 
 
-def merge(left: list, right: list):
+def merge(left: list, right: list) -> list:
     """
     Merge method of merge sort
     Input: lists to merge
@@ -82,7 +82,7 @@ def merge(left: list, right: list):
     return result
 
 
-def merge_sort(data: list):
+def merge_sort(data: list) -> list:
     """
     Merge sort implementation
     Input: any list which contains comparable elements
@@ -97,7 +97,7 @@ def merge_sort(data: list):
     return merge(merge_sort(left), merge_sort(right))
 
 
-def partition(data: list, left: int, right: int):
+def partition(data: list, left: int, right: int) -> int:
     """
     partition method of quick sort
     """
@@ -121,7 +121,7 @@ def qsort(data: list, left: int, right: int):
         qsort(data, pivot + 1, right)
 
 
-def quick_sort(data: list):
+def quick_sort(data: list) -> list:
     """
     Quick sort implementation
     Input: any list which contains comparable elements
@@ -132,7 +132,7 @@ def quick_sort(data: list):
     return data
 
 
-def quick_sort2(data: list):
+def quick_sort2(data: list) -> list:
     """
     Another quick sort implementation
     Source:
@@ -144,7 +144,7 @@ def quick_sort2(data: list):
     return quick_sort2(low) + [pivot] + quick_sort2(high)
 
 
-def partition2(data: list):
+def partition2(data: list) -> tuple[list, int, list]:
     """
     Partition for second quick sort
     """
@@ -154,7 +154,7 @@ def partition2(data: list):
     return low, pivot, high
 
 
-def bucket_sort(data: list):
+def bucket_sort(data: list) -> list:
     """
     Bucket sort implementation
     """
@@ -174,7 +174,7 @@ def bucket_sort(data: list):
     return result
 
 
-def heap_sort(data: list):
+def heap_sort(data: list) -> list:
     """
     Heap sort implementation
     Input: any list which contains comparable elements

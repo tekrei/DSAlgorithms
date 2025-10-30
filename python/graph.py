@@ -5,10 +5,11 @@ Graph implementation and algorithms
 Using adjacency list represantation for the graph
 Source: Introduction to Computation and Programming Using Python
 """
+
 from collections import defaultdict
 from queue import PriorityQueue
 import time
-from typing import Type
+from typing import Optional
 
 
 class Node:
@@ -20,9 +21,7 @@ class Node:
 
 
 class Edge:
-    def __init__(
-        self, source: Type[Node], destination: Type[Node], weight: float = 1.0
-    ):
+    def __init__(self, source: Node, destination: Node, weight: float = 1.0):
         self.source = source
         self.destination = destination
         self.weight = weight
@@ -37,14 +36,14 @@ class Digraph:
         self.edges = defaultdict()
         self.weight = defaultdict()
 
-    def addNode(self, node: Type[Node]):
+    def addNode(self, node: Node):
         if node in self.nodes:
             raise ValueError("Duplicate node")
         else:
             self.nodes.append(node)
             self.edges[node] = []
 
-    def addEdge(self, edge: Type[Edge]):
+    def addEdge(self, edge: Edge):
         src = edge.source
         dst = edge.destination
         wgt = edge.weight
@@ -53,13 +52,13 @@ class Digraph:
         self.edges[src].append(dst)
         self.weight[src, dst] = wgt
 
-    def getWeight(self, source: Type[Node], destination: Type[Node]):
+    def getWeight(self, source: Node, destination: Node):
         try:
             return self.weight[source, destination]
         except KeyError:
             return float("inf")
 
-    def adjacent(self, node: Type[Node]):
+    def adjacent(self, node: Node):
         try:
             return self.edges[node]
         except KeyError:
@@ -88,11 +87,11 @@ class Graph(Digraph):
 
 def DFS(
     graph: Digraph,
-    start: Type[Node],
-    end: Type[Node],
+    start: Node,
+    end: Node,
     path: list = [],
-    shortest: list = None,
-):
+    shortest: Optional[list] = None,
+) -> Optional[list]:
     path = path + [start]
     if start == end:
         return path
@@ -105,7 +104,7 @@ def DFS(
     return shortest
 
 
-def BFS(graph: Graph, start: Type[Node], end: Type[Node]):
+def BFS(graph: Graph, start: Node, end: Node) -> Optional[list]:
     init_path = [start]
     path_queue = [init_path]
     visited = [start]
@@ -121,17 +120,18 @@ def BFS(graph: Graph, start: Type[Node], end: Type[Node]):
     return None
 
 
-def print_path(path: list) -> str:
+def print_path(path: Optional[list]) -> str:
     result = ""
-    for i in range(len(path)):
-        if i == len(path) - 1:
-            result = result + str(path[i])
-        else:
-            result = result + str(path[i]) + "->"
+    if path:
+        for i in range(len(path)):
+            if i == len(path) - 1:
+                result = result + str(path[i])
+            else:
+                result = result + str(path[i]) + "->"
     return result
 
 
-def dijkstra(graph: Graph, start: Type[Node]):
+def dijkstra(graph: Graph, start: Node) -> tuple[dict, dict]:
     """
     works on non-negative weighted graphs
     """
@@ -161,7 +161,7 @@ def dijkstra(graph: Graph, start: Type[Node]):
     return dist, parent
 
 
-def dijsktra_test(start_node: Type[Node]):
+def dijsktra_test(start_node: Node) -> str:
     """
     dijkstra test
     """

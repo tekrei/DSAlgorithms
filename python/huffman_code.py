@@ -9,7 +9,7 @@ from heapq import heappush, heappop, heapify
 from collections import defaultdict
 
 
-def encode(char_freq: dict):
+def encode(char_freq: dict) -> list:
     heap = [[wt, [sym, ""]] for sym, wt in char_freq.items()]
     heapify(heap)
     while len(heap) > 1:
@@ -26,12 +26,11 @@ def encode(char_freq: dict):
 
 
 if __name__ == "__main__":
-    text = "A very beautiful huffman code generation \
-            example in Python programming language"
+    text = "A very beautiful huffman code generation example in Python programming language"
     char_freq = defaultdict(int)
     for char in text:
         char_freq[char] += 1
-    HUFFMAN = encode(char_freq)
+    huffman = encode(char_freq)
     print("Symbol\tWeight\tHuffman Code")
-    for p in HUFFMAN:
+    for p in huffman:
         print("%s\t%s\t%s" % (p[0], char_freq[p[0]], p[1]))

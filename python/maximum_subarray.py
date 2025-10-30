@@ -3,10 +3,11 @@ Created on May 13, 2015
 
 Algorithm examples from Introduction to Algorithms (3rd) book
 """
+
 import random
 
 
-def max_subarray(A: list):
+def max_subarray(A: list) -> int:
     """
     Variation of Kadane's algorithm
     Dynamic programming solution
@@ -19,7 +20,7 @@ def max_subarray(A: list):
     return max_so_far
 
 
-def maximum_subarray(data: list):
+def maximum_subarray(data: list) -> tuple[int, int, int]:
     """
     Dynamic programming solution for maximum subarray problem
     returns start and end index together with sum of the maximum subarray

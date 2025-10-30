@@ -5,7 +5,7 @@ Chapter 9 codes from Introduction to Computation and Programming Using Python
 """
 
 
-def is_subset(L1: list, L2: list):
+def is_subset(L1: list, L2: list) -> bool:
     for e1 in L1:
         matched = False
         for e2 in L2:
@@ -17,7 +17,7 @@ def is_subset(L1: list, L2: list):
     return True
 
 
-def intersection(L1: list, L2: list):
+def intersection(L1: list, L2: list) -> list:
     tmp = []
     for e1 in L1:
         for e2 in L2:
@@ -31,7 +31,7 @@ def intersection(L1: list, L2: list):
     return res
 
 
-def get_binary_rep(n, digit_count):
+def get_binary_rep(n, digit_count) -> str:
     result = ""
     while n > 0:
         result = str(n % 2) + result
@@ -43,15 +43,15 @@ def get_binary_rep(n, digit_count):
     return result
 
 
-def gen_power_set(L: list):
-    power_set = []
+def gen_power_set(L: list) -> set:
+    power_set = set()
     for i in range(0, 2 ** len(L)):
         binary_str = get_binary_rep(i, len(L))
         subset = []
         for j in range(len(binary_str)):
             if binary_str[j] == "1":
                 subset.append(L[j])
-        power_set.append(subset)
+        power_set.add(subset)
     return power_set
 
 

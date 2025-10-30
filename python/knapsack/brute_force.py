@@ -6,13 +6,14 @@ Source: Introduction to Computation and Programming Using Python
 """
 from item import build_items, Item
 from list_operations import gen_power_set
+from collections.abc import Callable
 
 
 def choose_best(
-    pset: set, constraint: float, get_value: callable, get_weight: callable
-):
+    pset: set, constraint: float, get_value: Callable, get_weight: Callable
+) -> tuple[list, float]:
     best_value = 0.0
-    best_set = None
+    best_set = []
     for items in pset:
         items_value = 0.0
         items_weight = 0.0

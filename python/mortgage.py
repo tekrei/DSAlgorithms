@@ -3,7 +3,9 @@ Created on May 15, 2015
 
 Plotting example from Introduction to Computation and Programming Using Python
 """
-from matplotlib import pylab
+
+from matplotlib import pyplot
+import numpy as np
 
 
 def find_payment(loan: float, rate: float, m: int):
@@ -14,32 +16,32 @@ def find_payment(loan: float, rate: float, m: int):
 
 
 class MortgagePlots:
-    def __init__(self, loan, paid):
-        self.loan = loan
-        self.paid = [paid]
-        self.owed = [loan]
-        self.legend = None
+    def __init__(self, loan: float, paid: float):
+        self.loan: float = loan
+        self.paid: list = [paid]
+        self.owed: list = [loan]
+        self.legend: str = ""
 
     def plot_payments(self, style: str):
-        pylab.plot(self.paid[1:], style, label=self.legend)
+        pyplot.plot(self.paid[1:], style, label=self.legend)
 
     def plot_balance(self, style: str):
-        pylab.plot(self.owed, style, label=self.legend)
+        pyplot.plot(self.owed, style, label=self.legend)
 
     def plot_total_pd(self, style: str):
         total_pd = [self.paid[0]]
         for i in range(1, len(self.paid)):
             total_pd.append(total_pd[-1] + self.paid[i])
-        pylab.plot(total_pd, style, label=self.legend)
+        pyplot.plot(total_pd, style, label=self.legend)
 
     def plot_net(self, style: str):
         total_pd = [self.paid[0]]
         for i in range(1, len(self.paid)):
             total_pd.append(total_pd[-1] + self.paid[i])
-        equity = pylab.array([self.loan] * len(self.owed))
-        equity = equity - pylab.array(self.owed)
-        net = pylab.array(total_pd) - equity
-        pylab.plot(net, style, label=self.legend)
+        equity = np.array([self.loan] * len(self.owed))
+        equity = equity - np.array(self.owed)
+        net = np.array(total_pd) - equity
+        pyplot.plot(net, style, label=self.legend)
 
 
 class Mortgage(MortgagePlots):
@@ -51,7 +53,7 @@ class Mortgage(MortgagePlots):
         self.rate = annual_rate / 12.0
         self.months = months
         self.payment = find_payment(loan, self.rate, months)
-        self.legend = None  # description of mortgage
+        self.legend: str = ""  # description of mortgage
 
     def make_payment(self):
         """Make a payment"""
@@ -134,37 +136,37 @@ def plot_mortgages(morts: list, amount: float):
     cost = 1
     balance = 2
     netCost = 3
-    pylab.figure(payments)
-    pylab.title("Monthly Payments of Different $%s Mortgages" % amount)
-    pylab.xlabel("Months")
-    pylab.ylabel("Monthly Payments")
-    pylab.figure(cost)
-    pylab.title("Cash Outlay Different $%s Mortgages" % amount)
-    pylab.xlabel("Months")
-    pylab.ylabel("Total Payments")
-    pylab.figure(balance)
-    pylab.title("Balance Remaining $%s Mortgages" % amount)
-    pylab.xlabel("Months")
-    pylab.ylabel("Remaining Loan Balance $")
-    pylab.figure(netCost)
-    pylab.title("Net Cost $%s Mortgages" % amount)
-    pylab.xlabel("Months")
-    pylab.ylabel("Payments - Equity $")
+    pyplot.figure(payments)
+    pyplot.title("Monthly Payments of Different $%s Mortgages" % amount)
+    pyplot.xlabel("Months")
+    pyplot.ylabel("Monthly Payments")
+    pyplot.figure(cost)
+    pyplot.title("Cash Outlay Different $%s Mortgages" % amount)
+    pyplot.xlabel("Months")
+    pyplot.ylabel("Total Payments")
+    pyplot.figure(balance)
+    pyplot.title("Balance Remaining $%s Mortgages" % amount)
+    pyplot.xlabel("Months")
+    pyplot.ylabel("Remaining Loan Balance $")
+    pyplot.figure(netCost)
+    pyplot.title("Net Cost $%s Mortgages" % amount)
+    pyplot.xlabel("Months")
+    pyplot.ylabel("Payments - Equity $")
     for i in range(len(morts)):
-        pylab.figure(payments)
+        pyplot.figure(payments)
         morts[i].plot_payments(styles[i])
-        pylab.figure(cost)
+        pyplot.figure(cost)
         morts[i].plot_total_pd(styles[i])
-        pylab.figure(balance)
+        pyplot.figure(balance)
         morts[i].plot_balance(styles[i])
-        pylab.figure(netCost)
+        pyplot.figure(netCost)
         morts[i].plot_net(styles[i])
-    pylab.figure(payments)
-    pylab.legend(loc="upper center")
-    pylab.figure(cost)
-    pylab.legend(loc="best")
-    pylab.figure(balance)
-    pylab.legend(loc="best")
+    pyplot.figure(payments)
+    pyplot.legend(loc="upper center")
+    pyplot.figure(cost)
+    pyplot.legend(loc="best")
+    pyplot.figure(balance)
+    pyplot.legend(loc="best")
 
 
 if __name__ == "__main__":
@@ -178,4 +180,4 @@ if __name__ == "__main__":
         variable_rate_2=0.095,
         months=48,
     )
-    pylab.show()
+    pyplot.show()

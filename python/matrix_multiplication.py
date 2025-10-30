@@ -8,7 +8,7 @@ import numpy as np
 from operator import mul
 
 
-def square_matrix_multiplication(matrix1, matrix2):
+def square_matrix_multiplication(matrix1: np.matrix, matrix2: np.matrix) -> np.ndarray:
     """
     Usual matrix multiplication with O(n^3) complexity
     """
